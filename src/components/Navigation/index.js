@@ -8,24 +8,30 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
-export default function Navigation() {
+const Navigation = () => {
   const token = useSelector(selectToken);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+  const showMyIsland = token ? (
+    <NavbarItem path="/myisland" linkText="My Island" />
+  ) : null;
 
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        YOUR PROJECT NAME
+        <h2>Portfolio project</h2>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/other" linkText="Other" />
+          <NavbarItem path="/villagers" linkText="Villagers" />
+          {showMyIsland}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
-}
+};
+
+export { Navigation };
