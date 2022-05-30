@@ -7,6 +7,7 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import "./styles.css";
 
 const Navigation = () => {
   const token = useSelector(selectToken);
@@ -17,7 +18,7 @@ const Navigation = () => {
   ) : null;
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg" sticky="top" variant="dark" className="navbar-custom">
       <Navbar.Brand as={NavLink} to="/">
         <h2>Portfolio project</h2>
       </Navbar.Brand>

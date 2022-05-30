@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
+import "./fonts/Fink-Heavy-Font/FinkHeavy.ttf";
 import { Routes, Route } from "react-router-dom";
 
 import { Loading, MessageBox, Navigation } from "./components";
