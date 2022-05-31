@@ -1,5 +1,9 @@
 import axios from "axios";
-import { startLoading, villagersFetched } from "./slice";
+import {
+  startLoading,
+  villagerDetailsFetched,
+  villagersFetched,
+} from "./slice";
 
 const API_KEY = process.env.REACT_APP_NOOKIPEDIA_API_KEY;
 const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetails=true`;
@@ -21,7 +25,7 @@ export function fetchVillagerDetails(name) {
       const response = await axios.get(`${API_URL}&name=${name}`);
       const details = response.data;
       console.log("thunk details response", details);
-      dispatch(villagersFetched(response.data));
+      dispatch(villagerDetailsFetched(response.data));
     } catch (e) {
       console.log(e.message);
     }

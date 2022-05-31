@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
   villagers: [],
-  villagerDetails: [],
+  villagerDetails: null,
 };
 
 export const villagersSlice = createSlice({
@@ -24,6 +24,7 @@ export const villagersSlice = createSlice({
   },
 });
 
-export const { startLoading, villagersFetched } = villagersSlice.actions;
+export const { startLoading, villagersFetched, villagerDetailsFetched } =
+  villagersSlice.actions;
 
 export default villagersSlice.reducer;

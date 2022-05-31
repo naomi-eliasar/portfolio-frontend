@@ -8,27 +8,27 @@ import { fetchVillagerDetails } from "../../store/villager/thunk";
 const Details = () => {
   const dispatch = useDispatch();
   const routeParams = useParams();
-  const villagerDetails = useSelector(selectVillagerDetails);
+  const details = useSelector(selectVillagerDetails);
 
-  console.log("details");
+  console.log("details", details);
 
   useEffect(() => {
     dispatch(fetchVillagerDetails(routeParams.name));
   }, [dispatch, routeParams.name]);
 
-  // return villagerDetails ? (
+  // return details ? (
   //   <div>
   //     <HeroBanner>
-  //       <h1>{villagerDetails.name}</h1>
+  //       <h1>{details.name}</h1>
   //     </HeroBanner>
-  //     <p>{villagerDetails.id}</p>
+  //     <p>{details.id}</p>
   //   </div>
   // ) : (
   //   <p>Loading...</p>
   // );
   return (
     <div>
-      <h1>{villagerDetails.name}</h1>
+      <h1>{details.name}</h1>
     </div>
   );
 };
