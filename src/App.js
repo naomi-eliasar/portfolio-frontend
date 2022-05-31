@@ -4,7 +4,7 @@ import "./fonts/Fink-Heavy-Font/FinkHeavy.ttf";
 import { Routes, Route } from "react-router-dom";
 
 import { Loading, MessageBox, Navigation } from "./components";
-import { Home, SignUp, Login, Villagers, Details, MyIsland } from "./pages";
+import { SignUp, Login, Villagers, Details, MyIsland } from "./pages";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -24,10 +24,9 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Villagers />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/villagers" element={<Villagers />} />
         <Route path="/details" element={<Details />} />
         <Route path="/myisland" element={<MyIsland />} />
       </Routes>
