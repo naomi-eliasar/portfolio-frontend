@@ -9,7 +9,7 @@ const VillagerCard = ({ id, name, image_url, personality, species }) => {
       </div>
       <div className="villagerCardInfo">
         <h2>
-          <Link to={`/details/${id}`} style={{ color: "white" }}>
+          <Link to={`/details/${name}`} style={{ color: "white" }}>
             {name}
           </Link>
         </h2>

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
   villagers: [],
+  villagerDetails: [],
 };
 
 export const villagersSlice = createSlice({
@@ -14,6 +15,10 @@ export const villagersSlice = createSlice({
     },
     villagersFetched: (state, action) => {
       state.villagers = action.payload;
+      state.loading = false;
+    },
+    villagerDetailsFetched: (state, action) => {
+      state.villagerDetails = action.payload;
       state.loading = false;
     },
   },
