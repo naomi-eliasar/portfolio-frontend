@@ -1,0 +1,20 @@
+.villagerPage {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  background-image: url("../../images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.displayVillagers {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  /* margin-left: 270px; */
+}
