@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { VillagerCard } from "../../components";
 import "./styles.css";
 
@@ -36,7 +36,6 @@ const Villagers = () => {
             />
           );
         })}
-        <button onClick={() => dispatch(fetchVillagers)}>Load more</button>
       </div>
     </div>
   ) : (

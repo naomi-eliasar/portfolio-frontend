@@ -5,10 +5,9 @@ import {
   CDBSidebarFooter,
   CDBSidebarHeader,
   CDBSidebarMenu,
-  CDBSidebarMenuItem,
 } from "cdbreact";
-import { NavLink } from "react-router-dom";
 import "./styles.css";
+import SidebarItem from "./SidebarItem";
 
 const SidebarMenu = () => {
   return (
@@ -25,57 +24,27 @@ const SidebarMenu = () => {
           <a
             href="/"
             className="text-decoration-none"
-            style={{ color: "inherit" }}
+            style={{ color: "inherit", fontSize: "18px" }}
           >
-            Sidebar
+            Menu
           </a>
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink
-              exact
-              to="/editisland"
-              activeClassName="activeClicked"
-              className="navlink"
-            >
-              <CDBSidebarMenuItem icon="edit">Edit island</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink
-              exact
-              to="/dreamies"
-              activeClassName="activeClicked"
-              className="navlink"
-            >
-              <CDBSidebarMenuItem icon="heart">Dreamies</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink
-              exact
-              to="/residents"
-              activeClassName="activeClicked"
-              className="navlink"
-            >
-              <CDBSidebarMenuItem icon="house-user">
-                Residents
-              </CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink
-              exact
-              to="/addisland"
-              activeClassName="activeClicked"
-              className="navlink"
-            >
-              <CDBSidebarMenuItem icon="plus">Add Island</CDBSidebarMenuItem>
-            </NavLink>
-
-            <NavLink
-              exact
-              to="/island2"
-              activeClassName="activeClicked"
-              className="navlink"
-            >
-              <CDBSidebarMenuItem icon="home">Island 2</CDBSidebarMenuItem>
-            </NavLink>
+            <SidebarItem
+              path="/editisland"
+              linkText="Edit island"
+              icon="edit"
+            />
+            <SidebarItem path="/dreamies" linkText="Dreamies" icon="heart" />
+            <SidebarItem
+              path="/residents"
+              linkText="Residents"
+              icon="house-user"
+            />
+            <SidebarItem path="/addisland" linkText="Add Island" icon="plus" />
+            <SidebarItem path="/island2" linkText="Island 2" icon="home" />
           </CDBSidebarMenu>
         </CDBSidebarContent>
 

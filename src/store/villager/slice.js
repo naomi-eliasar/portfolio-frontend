@@ -14,8 +14,7 @@ export const villagersSlice = createSlice({
       state.loading = true;
     },
     villagersFetched: (state, action) => {
-      state.villagers = [...state.villagers, ...action.payload];
-      // state.villagers = action.payload;
+      state.villagers = action.payload;
       state.loading = false;
     },
     villagerDetailsFetched: (state, action) => {

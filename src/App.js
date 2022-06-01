@@ -23,7 +23,9 @@ function App() {
       <Navigation />
       <MessageBox />
       {isLoading ? <Loading /> : null}
+
       <SidebarMenu />
+
       <Routes>
         <Route path="/" element={<Villagers />} />
         <Route path="/signup" element={<SignUp />} />

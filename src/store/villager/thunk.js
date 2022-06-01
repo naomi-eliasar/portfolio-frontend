@@ -11,10 +11,7 @@ const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetai
 export async function fetchVillagers(dispatch, getState) {
   try {
     dispatch(startLoading());
-    const offset = getState().villager.villagers.length;
-    console.log("offset", offset);
-    const response = await axios.get(`${API_URL}&offset=${offset}&limit=4`);
-    // const response = await axios.get(`${API_URL}`);
+    const response = await axios.get(`${API_URL}`);
     console.log("thunk response", response.data);
     dispatch(villagersFetched(response.data));
   } catch (e) {
