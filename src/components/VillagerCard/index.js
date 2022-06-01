@@ -1,9 +1,14 @@
 import "./styles.css";
 import { Link } from "react-router-dom";
+import { FaHeart, FaHouseUser } from "react-icons/fa";
 
 const VillagerCard = ({ id, name, image_url, personality, species }) => {
   return (
     <div key={id} className="villagerCard">
+      <div className="villagerCardFavs">
+        <FaHeart />
+        <FaHouseUser />
+      </div>
       <div className="villagerImageBox">
         <img src={image_url} alt={name} className="villagerImage" />
       </div>

@@ -4,3 +4,5 @@ export * from "./MessageBox";
 export * from "./Navigation";
 export * from "./VillagerCard";
 export * from "./SidebarMenu";
+export * from "./FilterMenu";
+export * from "./Searchbar";
