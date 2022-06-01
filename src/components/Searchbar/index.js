@@ -1,8 +1,11 @@
+import { CDBSidebarMenuItem } from "cdbreact";
+
 const Searchbar = () => {
   return (
     <div>
-      <label>Search by name</label>
-      <input placeholder="enter villager name" />
+      <CDBSidebarMenuItem icon="search">
+        <input onChange={null} placeholder="enter villager name" />
+      </CDBSidebarMenuItem>
     </div>
   );
 };

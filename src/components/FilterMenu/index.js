@@ -1,20 +1,14 @@
-const FilterMenu = () => {
+import { CDBSidebarMenuItem } from "cdbreact";
+
+const FilterMenu = (props) => {
   return (
     <div className="filterBox">
-      <div classname="speciesFilter">
-        <label>Filter by species</label>
+      <CDBSidebarMenuItem icon={props.icon}>
         <select>
-          <option>Frog</option>
-          <option>Koala</option>
+          <option>{props.option1}</option>
+          <option>{props.option2}</option>
         </select>
-      </div>
-      <div className="personalityFilter">
-        <label>Filter by personality</label>
-        <select>
-          <option>Normal</option>
-          <option>Peppy</option>
-        </select>
-      </div>
+      </CDBSidebarMenuItem>
     </div>
   );
 };

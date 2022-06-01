@@ -10,6 +10,8 @@ import "./styles.css";
 import SidebarItem from "./SidebarItem";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
+import { FilterMenu } from "../FilterMenu";
+import { Searchbar } from "../Searchbar";
 
 const SidebarMenu = () => {
   const token = useSelector(selectToken);
@@ -49,7 +51,9 @@ const SidebarMenu = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <SidebarItem path="/" linkText="Filter" icon="filter" />
+            <Searchbar />
+            <FilterMenu icon="filter" option1="Frog" option2="Koala" />
+            <FilterMenu icon="filter" option1="Normal" option2="Peppy" />
             {showMyIslandSidebar}
           </CDBSidebarMenu>
         </CDBSidebarContent>
