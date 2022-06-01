@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { HeroBanner } from "../../components";
 import { selectVillagerDetails } from "../../store/villager/selector";
 import { fetchVillagerDetails } from "../../store/villager/thunk";
 import "./styles.css";
