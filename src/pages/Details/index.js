@@ -18,12 +18,10 @@ const Details = () => {
   console.log("route param:", routeParams.id);
 
   return details ? (
-    <div className="detailPage">
-      <div className="displayDetails">
-        {details.map((detail) => {
-          return <h1>{detail.name}</h1>;
-        })}
-      </div>
+    <div className="displayDetails">
+      {details.map((detail) => {
+        return <h1>{detail.name}</h1>;
+      })}
     </div>
   ) : (
     <p>Loading...</p>

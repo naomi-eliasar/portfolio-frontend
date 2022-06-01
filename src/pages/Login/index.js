@@ -34,14 +34,7 @@ const Login = () => {
   }
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${background})`,
-        height: "100vh",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
+    <div>
       <HeroBanner>
         <h1>Login</h1>
       </HeroBanner>
