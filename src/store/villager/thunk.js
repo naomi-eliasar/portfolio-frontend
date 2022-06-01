@@ -13,7 +13,8 @@ export async function fetchVillagers(dispatch, getState) {
     dispatch(startLoading());
     const offset = getState().villager.villagers.length;
     console.log("offset", offset);
-    const response = await axios.get(`${API_URL}&offset=${offset}&limit=16`);
+    const response = await axios.get(`${API_URL}&offset=${offset}&limit=4`);
+    // const response = await axios.get(`${API_URL}`);
     console.log("thunk response", response.data);
     dispatch(villagersFetched(response.data));
   } catch (e) {

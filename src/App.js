@@ -3,13 +3,7 @@ import "./App.css";
 import "./fonts/Fink-Heavy-Font/FinkHeavy.ttf";
 import { Routes, Route } from "react-router-dom";
 
-import {
-  Loading,
-  MessageBox,
-  Navigation,
-  Sidebar,
-  SidebarMenu,
-} from "./components";
+import { Loading, MessageBox, Navigation, SidebarMenu } from "./components";
 import { SignUp, Login, Villagers, Details, MyIsland } from "./pages";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -30,8 +24,6 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <SidebarMenu />
-      {/* <Sidebar /> */}
-
       <Routes>
         <Route path="/" element={<Villagers />} />
         <Route path="/signup" element={<SignUp />} />
