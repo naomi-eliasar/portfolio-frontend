@@ -20,7 +20,6 @@ const Villagers = () => {
         {villagers.map((villager) => {
           return (
             <VillagerCard
-              key={villager.id}
               id={villager.id}
               name={villager.name}
               title_color={villager.title_color}
@@ -37,7 +36,7 @@ const Villagers = () => {
             />
           );
         })}
-        {/* <button onClick={() => dispatch(fetchVillagers)}>Load more</button> */}
+        <button onClick={() => dispatch(fetchVillagers)}>Load more</button>
       </div>
     </div>
   ) : (

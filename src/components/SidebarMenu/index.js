@@ -8,6 +8,7 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 import { NavLink } from "react-router-dom";
+import "./styles.css";
 
 const SidebarMenu = () => {
   return (
@@ -16,10 +17,10 @@ const SidebarMenu = () => {
         display: "flex",
         height: "100vh",
         overflow: "scroll initial",
-        sticky: "top",
+        position: "fixed",
       }}
     >
-      <CDBSidebar textColor="#fff" backgroundColor="#009a7e">
+      <CDBSidebar textColor="#fff" backgroundColor="#08ccad">
         <CDBSidebarHeader prefix={<i className="fa fa-bars fa-large"></i>}>
           <a
             href="/"
@@ -32,22 +33,47 @@ const SidebarMenu = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            <NavLink exact to="/" activeClassName="activeClicked">
+            <NavLink
+              exact
+              to="/editisland"
+              activeClassName="activeClicked"
+              className="navlink"
+            >
               <CDBSidebarMenuItem icon="edit">Edit island</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/tables" activeClassName="activeClicked">
+            <NavLink
+              exact
+              to="/dreamies"
+              activeClassName="activeClicked"
+              className="navlink"
+            >
               <CDBSidebarMenuItem icon="heart">Dreamies</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/profile" activeClassName="activeClicked">
+            <NavLink
+              exact
+              to="/residents"
+              activeClassName="activeClicked"
+              className="navlink"
+            >
               <CDBSidebarMenuItem icon="house-user">
                 Residents
               </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/analytics" activeClassName="activeClicked">
+            <NavLink
+              exact
+              to="/addisland"
+              activeClassName="activeClicked"
+              className="navlink"
+            >
               <CDBSidebarMenuItem icon="plus">Add Island</CDBSidebarMenuItem>
             </NavLink>
 
-            <NavLink exact to="/hero404" activeClassName="activeClicked">
+            <NavLink
+              exact
+              to="/island2"
+              activeClassName="activeClicked"
+              className="navlink"
+            >
               <CDBSidebarMenuItem icon="home">Island 2</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
