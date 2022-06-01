@@ -28,7 +28,7 @@ const Villagers = () => {
               image_url={villager.image_url}
               species={villager.species}
               personality={villager.personality}
-              gender={villager.gener}
+              gender={villager.gender}
               birthday_month={villager.birthday_month}
               birthday_day={villager.birthday_day}
               sign={villager.sign}
@@ -37,6 +37,7 @@ const Villagers = () => {
             />
           );
         })}
+        {/* <button onClick={() => dispatch(fetchVillagers)}>Load more</button> */}
       </div>
     </div>
   ) : (

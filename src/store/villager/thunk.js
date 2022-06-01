@@ -6,11 +6,14 @@ import {
 } from "./slice";
 
 const API_KEY = process.env.REACT_APP_NOOKIPEDIA_API_KEY;
-const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetails=true`;
+const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetails=true&game=NH`;
 
 export async function fetchVillagers(dispatch, getState) {
   try {
-    const response = await axios.get(`${API_URL}`);
+    dispatch(startLoading());
+    const offset = getState().villager.villagers.length;
+    console.log("offset", offset);
+    const response = await axios.get(`${API_URL}&offset=${offset}&limit=8`);
     console.log("thunk response", response.data);
     dispatch(villagersFetched(response.data));
   } catch (e) {

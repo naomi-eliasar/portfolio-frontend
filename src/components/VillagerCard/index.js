@@ -1,9 +1,9 @@
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-const VillagerCard = ({ id, name, image_url, personality, species }) => {
+const VillagerCard = ({ id, key, name, image_url, personality, species }) => {
   return (
-    <div key={id} className="villagerCard">
+    <div key={key} className="villagerCard">
       <div className="villagerImageBox">
         <img src={image_url} alt={name} className="villagerImage" />
       </div>

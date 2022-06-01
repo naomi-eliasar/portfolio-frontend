@@ -10,8 +10,8 @@
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 10px;
-  margin: 20px;
-  width: 25%;
+  margin: 10px;
+  width: 20%;
 }
 
 .villagerCard:hover {
@@ -35,7 +35,7 @@
 .villagerImageBox {
   display: flex;
   justify-content: center;
-  height: 400px;
+  height: 300px;
 }
 
 .villagerImage {
