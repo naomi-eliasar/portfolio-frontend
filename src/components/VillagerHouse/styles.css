@@ -1,0 +1,34 @@
+.villagerHouseCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  background-image: url("../../images/cardBackground.png");
+  background-size: cover;
+  border: 10px solid #009a7e;
+  border-radius: 15px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 10px;
+  margin: 10px;
+  width: 20%;
+  height: 396.4px;
+}
+
+.villagerHouse:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.villagerHouseImageBox {
+  display: flex;
+  justify-content: center;
+  max-height: 190px;
+  padding: 3px;
+}
+
+.houseImage {
+  display: flex;
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+}

@@ -5,11 +5,17 @@
 
 .App {
   font-family: FinkHeavy;
-  background-image: url("./images/background.jpg");
-  /* background-repeat: round; */
-  background-repeat: no-repeat;
+  background: url(images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  height: 100vh;
+}
+
+html {
+  background: url(images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
