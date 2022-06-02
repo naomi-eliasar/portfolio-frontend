@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 
 const Searchbar = (props) => {
   return (
-    <div>
+    <form>
       <input
         type="text"
         placeholder="Enter villager name"
@@ -13,12 +13,13 @@ const Searchbar = (props) => {
       <button type="submit">
         <FaSearch />
       </button>
-    </div>
+    </form>
   );
 };
 
 export { Searchbar };
 
+////Sidebar searchbar
 // import { CDBSidebarMenuItem } from "cdbreact";
 
 // const Searchbar = () => {

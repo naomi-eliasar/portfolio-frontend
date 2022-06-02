@@ -51,14 +51,8 @@ const SidebarMenu = () => {
 
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
-            {/* <Searchbar /> */}
-            {/* <CDBSidebarMenuItem> */}
-            {/* <input placeholder="enter villager name" /> */}
-            {/* <p>Text</p> */}
-            {/* </CDBSidebarMenuItem> */}
-            {/* <FilterMenu icon="filter" option1="Frog" option2="Koala" /> */}
-            {/* <FilterMenu icon="filter" option1="Normal" option2="Peppy" /> */}
-            {showMyIslandSidebar}
+            <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
+            {/* {showMyIslandSidebar} */}
           </CDBSidebarMenu>
         </CDBSidebarContent>
 
