@@ -6,8 +6,7 @@ const FilterMenu = (props) => {
     <div className="filterBox">
       <CDBSidebarMenuItem icon={props.icon}>
         <select>
-          <option>{props.option1}</option>
-          <option>{props.option2}</option>
+          <option>{props.options}</option>
         </select>
       </CDBSidebarMenuItem>
     </div>

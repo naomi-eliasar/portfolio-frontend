@@ -8,6 +8,7 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import "./styles.css";
+import { Searchbar } from "..";
 
 const Navigation = () => {
   const token = useSelector(selectToken);
@@ -26,6 +27,7 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Villagers" />
+          <Searchbar />
           {showMyIsland}
           {loginLogoutControls}
         </Nav>
