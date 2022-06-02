@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+import Button from "@mui/material/Button";
 import { login } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import background from "../../images/background.jpg";
 import { Field } from "../../components";
 
 const Login = () => {
@@ -61,11 +60,23 @@ const Login = () => {
               />
             </Form.Group>
             <Form.Group className="mt-5 mb-2">
-              <Button variant="primary" type="submit" onClick={submitForm}>
+              <Button
+                variant="contained"
+                type="submit"
+                style={{ backgroundColor: "#009a7e", fontFamily: "FinkHeavy" }}
+                onClick={submitForm}
+              >
                 Log in
               </Button>
             </Form.Group>
-            <Link to="/signup" style={{ textAlign: "center" }}>
+            <Link
+              to="/signup"
+              style={{
+                textAlign: "center",
+                fontFamily: "FinkHeavy",
+                color: "#009a7e",
+              }}
+            >
               Click here to sign up
             </Link>
           </Field>

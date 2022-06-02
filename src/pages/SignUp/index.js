@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
+import Button from "@mui/material/Button";
 import { signUp } from "../../store/user/actions";
 import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
@@ -73,11 +73,25 @@ const SignUp = () => {
             />
           </Form.Group>
           <Form.Group className="mt-5 mb-2">
-            <Button variant="primary" type="submit" onClick={submitForm}>
+            <Button
+              variant="contained"
+              type="submit"
+              style={{ backgroundColor: "#009a7e", fontFamily: "FinkHeavy" }}
+              onClick={submitForm}
+            >
               Sign up
             </Button>
           </Form.Group>
-          <Link to="/login">Click here to log in</Link>
+          <Link
+            to="/login"
+            style={{
+              textAlign: "center",
+              fontFamily: "FinkHeavy",
+              color: "#009a7e",
+            }}
+          >
+            Click here to log in
+          </Link>
         </Field>
       </Form>
     </Container>
