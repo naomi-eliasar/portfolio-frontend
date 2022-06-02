@@ -21,8 +21,9 @@ const Details = () => {
   return details ? (
     <div className="displayDetails">
       {details.map((detail) => {
+        console.log(`detail name: ${detail.name}`);
         return (
-          <div>
+          <div key={detail.id}>
             <HeroBanner>
               <h1>{detail.name}</h1>
               <p>"{detail.quote}"</p>

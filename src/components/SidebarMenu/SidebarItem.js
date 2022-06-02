@@ -7,7 +7,7 @@ export default function SidebarItem(props) {
     <NavLink
       as={NavLink}
       to={props.path}
-      activeClassName="activeClicked"
+      activeclassname="activeClicked"
       className="navlink"
       style={{ fontSize: "16px" }}
     >

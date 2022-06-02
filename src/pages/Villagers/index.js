@@ -19,6 +19,7 @@ const Villagers = () => {
       {villagers.map((villager) => {
         return (
           <VillagerCard
+            key={villager.id}
             id={villager.id}
             name={villager.name}
             image_url={villager.image_url}
