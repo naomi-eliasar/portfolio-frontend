@@ -1,14 +1,5 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
-// import { CDBSidebarMenuItem } from "cdbreact";
-
-// const Searchbar = () => {
-//   return (
-//     <CDBSidebarMenuItem icon="search">
-//       <input placeholder="enter villager name" type="text" />
-//     </CDBSidebarMenuItem>
-//   );
-// };
 
 const Searchbar = (props) => {
   return (
@@ -27,3 +18,13 @@ const Searchbar = (props) => {
 };
 
 export { Searchbar };
+
+// import { CDBSidebarMenuItem } from "cdbreact";
+
+// const Searchbar = () => {
+//   return (
+//     <CDBSidebarMenuItem icon="search">
+//       <input placeholder="enter villager name" type="text" />
+//     </CDBSidebarMenuItem>
+//   );
+// };
