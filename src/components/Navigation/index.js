@@ -27,7 +27,9 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Villagers" />
-          <Searchbar />
+          <Nav.Item>
+            <Searchbar />
+          </Nav.Item>
           {showMyIsland}
           {loginLogoutControls}
         </Nav>

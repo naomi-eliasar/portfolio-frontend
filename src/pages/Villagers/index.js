@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import { Searchbar, VillagerCard } from "../../components";
 import "./styles.css";
 import { useState } from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 import { selectVillagers } from "../../store/villager/selector";
 import { fetchVillagers } from "../../store/villager/thunk";
@@ -26,22 +28,29 @@ const Villagers = () => {
         <Searchbar value={filter} onChange={updateFilter} />
       </div>
       <div className="displayVillagers">
-        {villagers
-          .filter((villager) =>
-            villager.name.toLowerCase().includes(filter.toLowerCase())
-          )
-          .map((villager) => {
-            return (
-              <VillagerCard
-                key={villager.id}
-                id={villager.id}
-                name={villager.name}
-                image_url={villager.image_url}
-                species={villager.species}
-                personality={villager.personality}
-              />
-            );
-          })}
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            {villagers
+              .filter((villager) =>
+                villager.name.toLowerCase().includes(filter.toLowerCase())
+              )
+              .map((villager) => {
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                    <VillagerCard
+                      key={villager.id}
+                      id={villager.id}
+                      name={villager.name}
+                      image_url={villager.image_url}
+                      species={villager.species}
+                      personality={villager.personality}
+                    />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Box>
+        );
       </div>
     </div>
   ) : (

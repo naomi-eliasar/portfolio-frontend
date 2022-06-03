@@ -8,3 +8,4 @@ export * from "./FilterMenu";
 export * from "./Searchbar";
 export * from "./Field";
 export * from "./VillagerSpecs";
+export * from "./Appbar";
