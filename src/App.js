@@ -4,14 +4,7 @@ import "./fonts/Fink-Heavy-Font/FinkHeavy.ttf";
 import { Routes, Route } from "react-router-dom";
 
 import { Loading, MessageBox, Navigation, SidebarMenu } from "./components";
-import {
-  SignUp,
-  Login,
-  Villagers,
-  Details,
-  MyIsland,
-  VillagersGrid,
-} from "./pages";
+import { SignUp, Login, Villagers, Details, MyIsland } from "./pages";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
