@@ -3,6 +3,7 @@ import {
   startLoading,
   villagerDetailsFetched,
   villagersFetched,
+  villagerSpeciesFetched,
 } from "./slice";
 import { appLoading, appDoneLoading } from "../appState/slice";
 
@@ -32,6 +33,23 @@ export function fetchVillagerDetails(name) {
       const details = response.data;
       console.log("thunk details response", details);
       dispatch(villagerDetailsFetched(response.data));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
+}
+
+export function fetchVillagerSpecies(species) {
+  return async function (dispatch, getState) {
+    try {
+      dispatch(appLoading());
+      dispatch(startLoading());
+      const response = await axios.get(`${API_URL}&species=${species}`);
+      const details = response.data;
+      console.log("thunk species response", details);
+      dispatch(villagerSpeciesFetched(response.data));
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);

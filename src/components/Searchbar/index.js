@@ -18,14 +18,3 @@ const Searchbar = (props) => {
 };
 
 export { Searchbar };
-
-////Sidebar searchbar
-// import { CDBSidebarMenuItem } from "cdbreact";
-
-// const Searchbar = () => {
-//   return (
-//     <CDBSidebarMenuItem icon="search">
-//       <input placeholder="enter villager name" type="text" />
-//     </CDBSidebarMenuItem>
-//   );
-// };

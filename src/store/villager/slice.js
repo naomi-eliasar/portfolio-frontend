@@ -21,10 +21,18 @@ export const villagersSlice = createSlice({
       state.villagerDetails = action.payload;
       state.loading = false;
     },
+    villagerSpeciesFetched: (state, action) => {
+      state.villagers.species = action.payload;
+      state.loading = false;
+    },
   },
 });
 
-export const { startLoading, villagersFetched, villagerDetailsFetched } =
-  villagersSlice.actions;
+export const {
+  startLoading,
+  villagersFetched,
+  villagerDetailsFetched,
+  villagerSpeciesFetched,
+} = villagersSlice.actions;
 
 export default villagersSlice.reducer;
