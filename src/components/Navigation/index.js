@@ -8,7 +8,7 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import "./styles.css";
-import { Searchbar } from "..";
+import { Searchbar, DrawerMenu } from "..";
 
 const Navigation = () => {
   const token = useSelector(selectToken);
@@ -17,6 +17,7 @@ const Navigation = () => {
   const showMyIsland = token ? (
     <NavbarItem path="/myisland" linkText="My Island" />
   ) : null;
+  const showDrawer = token ? <DrawerMenu /> : null;
 
   return (
     <Navbar expand="lg" sticky="top" variant="dark" className="navbar-custom">
@@ -31,6 +32,7 @@ const Navigation = () => {
             <Searchbar />
           </Nav.Item>
           {showMyIsland}
+          <Nav.Item>{showDrawer}</Nav.Item>
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
