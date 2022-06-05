@@ -3,43 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { HeroBanner } from "../../components";
 import { selectIsland } from "../../store/island/selector";
+import { selectUser } from "../../store/user/selectors";
 import { fetchIslands } from "../../store/island/thunk";
-import { selectUserIslands } from "../../store/user/selectors";
-import { fetchUserIslands } from "../../store/user/actions";
 
 const MyIsland = () => {
   const dispatch = useDispatch();
-  const userWithIslands = useSelector(selectUserIslands);
+  const island = useSelector(selectIsland);
+  const user = useSelector(selectUser);
+
+  console.log("user id", user.id);
+  console.log("island", island);
 
   useEffect(() => {
-    dispatch(fetchUserIslands());
-  }, [dispatch]);
+    dispatch(fetchIslands(island));
+  }, [dispatch, island]);
 
-  return userWithIslands ? (
+  return island ? (
     <div className="islandPage">
-      {userWithIslands.map((user) => {
-        return (
-          <div>
-            <HeroBanner>
-              <div
-                className="bannerText"
-                style={{
-                  backgroundColor: `${user.islands.backgroundColor}`,
-                  color: `${user.islands.textColor}`,
-                }}
-              >
-                <h1>{user.islands.name}</h1>
-                <p>"{user.islands.description}"</p>
-              </div>
-              <div className="bannerIcons">
-                <p></p>
-                <p>{user.islands.starterFruit}</p>
-                <p>{user.islands.starterFlower}</p>
-              </div>
-            </HeroBanner>
-          </div>
-        );
-      })}
+      <HeroBanner>
+        <h1>{island.name}</h1>
+        <h5>"{island.description}"</h5>
+        {island.starterFruit}
+        {island.starterFlower}
+      </HeroBanner>
       <div className="displayAchievements">
         <h3>Achievements</h3>
       </div>
@@ -49,7 +35,6 @@ const MyIsland = () => {
       <div className="displayDreamies">
         <h3>Dreamies</h3>
       </div>
-      );
     </div>
   ) : (
     <p>Loading...</p>

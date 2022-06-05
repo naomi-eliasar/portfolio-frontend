@@ -4,7 +4,7 @@ import { FaHeart, FaHouseUser } from "react-icons/fa";
 
 const VillagerCard = ({ id, name, image_url, personality, species }) => {
   return (
-    <div key={id} className="villagerCard">
+    <div className="villagerCard">
       <div className="villagerCardFavs">
         <FaHeart />
         <FaHouseUser />

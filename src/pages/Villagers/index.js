@@ -36,9 +36,16 @@ const Villagers = () => {
               )
               .map((villager) => {
                 return (
-                  <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    lg={3}
+                    xl={2}
+                    key={villager.id}
+                  >
                     <VillagerCard
-                      key={villager.id}
                       id={villager.id}
                       name={villager.name}
                       image_url={villager.image_url}

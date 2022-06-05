@@ -3,27 +3,7 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
-import {
-  loginSuccess,
-  logOut,
-  tokenStillValid,
-  userIslandsFetched,
-} from "./slice";
-
-export function fetchUserIslands(id) {
-  return async function (dispatch, getState) {
-    try {
-      dispatch(appLoading());
-      const response = await axios.get(`http://localhost:4000/islands/${id}`);
-      console.log("thunk user island response", response.data);
-      dispatch(userIslandsFetched(response.data));
-      dispatch(appDoneLoading());
-    } catch (e) {
-      console.log(e.message);
-      dispatch(appDoneLoading());
-    }
-  };
-}
+import { loginSuccess, logOut, tokenStillValid } from "./slice";
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
