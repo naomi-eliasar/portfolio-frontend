@@ -8,13 +8,54 @@ import {
   logOut,
   tokenStillValid,
   userIslandsFetched,
+  islandUpdated,
 } from "./slice";
+
+export const updateMyIsland = (
+  name,
+  description,
+  starterFlower,
+  starterFruit,
+  backgroundColor,
+  textColor
+) => {
+  return async (dispatch, getState) => {
+    try {
+      const { island, token } = getState().user;
+      dispatch(appLoading());
+      const response = await axios.patch(
+        `http://localhost:4000/islands/${island.id}`,
+        {
+          name,
+          description,
+          starterFlower,
+          starterFruit,
+          backgroundColor,
+          textColor,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("update island", response);
+      dispatch(
+        showMessageWithTimeout("succes", false, "update successfull", 3000)
+      );
+      dispatch(islandUpdated(response.data.islands));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
 
 export function fetchUserIslands(id) {
   return async function (dispatch) {
     try {
       dispatch(appLoading());
-      const response = await axios.get(`http://localhost:4000/islands/${id}`);
+      const response = await axios.get(`http://localhost:4000/user/${id}`);
       console.log("thunk island response", response.data);
       dispatch(userIslandsFetched(response.data));
       dispatch(appDoneLoading());

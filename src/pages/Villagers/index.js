@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import { Searchbar, VillagerCard } from "../../components";
 import "./styles.css";
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Box, Grid } from "@mui/material";
 
 import { selectVillagers } from "../../store/villager/selector";
 import { fetchVillagers } from "../../store/villager/thunk";

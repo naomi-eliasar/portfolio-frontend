@@ -12,17 +12,13 @@ export const islandSlice = createSlice({
     startLoading: (state) => {
       state.loading = true;
     },
-    islandsFetched: (state, action) => {
+    islandFetched: (state, action) => {
       state.islands = action.payload;
       state.loading = false;
-    },
-    islandUpdated: (state, action) => {
-      state.islands = { ...action.payload, islands: state.islands };
     },
   },
 });
 
-export const { startLoading, islandsFetched, islandUpdated } =
-  islandSlice.actions;
+export const { startLoading, islandFetched } = islandSlice.actions;
 
 export default islandSlice.reducer;

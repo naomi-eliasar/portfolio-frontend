@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   token: localStorage.getItem("token"),
   profile: null,
-  islands: [],
+  userIslands: [],
 };
 
 export const userSlice = createSlice({
@@ -24,12 +24,20 @@ export const userSlice = createSlice({
       state.profile = action.payload.user;
     },
     userIslandsFetched: (state, action) => {
-      state.islands = action.payload;
+      state.userIslands = action.payload;
+    },
+    islandUpdated: (state, action) => {
+      state.userIslands = { ...action.payload, islands: state.userIslands };
     },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid, userIslandsFetched } =
-  userSlice.actions;
+export const {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  userIslandsFetched,
+  islandUpdated,
+} = userSlice.actions;
 
 export default userSlice.reducer;

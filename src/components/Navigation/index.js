@@ -15,7 +15,7 @@ const Navigation = () => {
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
   const showMyIsland = token ? (
-    <NavbarItem path="/myisland" linkText="My Island" />
+    <NavbarItem path="/myislands" linkText="My Islands" />
   ) : null;
   const showDrawer = token ? <DrawerMenu /> : null;
 
