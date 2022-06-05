@@ -16,9 +16,13 @@ export const islandSlice = createSlice({
       state.islands = action.payload;
       state.loading = false;
     },
+    islandUpdated: (state, action) => {
+      state.islands = { ...action.payload, islands: state.islands };
+    },
   },
 });
 
-export const { startLoading, islandsFetched } = islandSlice.actions;
+export const { startLoading, islandsFetched, islandUpdated } =
+  islandSlice.actions;
 
 export default islandSlice.reducer;

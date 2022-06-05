@@ -34,14 +34,22 @@ const DrawerMenu = () => {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <DrawerItem item="Edit island" icon={<ModeEdit />} />
-        <DrawerItem item="Residents" icon={<HolidayVillage />} />
-        <DrawerItem item="Dreamies" icon={<Favorite />} />
+        <DrawerItem item="Edit island" icon={<ModeEdit />} path="/editisland" />
+        <DrawerItem
+          item="Residents"
+          icon={<HolidayVillage />}
+          path="/residents"
+        />
+        <DrawerItem item="Dreamies" icon={<Favorite />} path="/dreamies" />
       </List>
       <Divider />
       <List>
-        <DrawerItem item="Add island" icon={<Add />} />
-        <DrawerItem item="Second island" icon={<OtherHouses />} />
+        <DrawerItem item="Add island" icon={<Add />} path="/addisland" />
+        <DrawerItem
+          item="Second island"
+          icon={<OtherHouses />}
+          path="/secondisland"
+        />
       </List>
     </Box>
   );

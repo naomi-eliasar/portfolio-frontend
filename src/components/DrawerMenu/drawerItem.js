@@ -1,15 +1,22 @@
 import * as React from "react";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Link,
+} from "@mui/material";
 
 export default function DrawerItem(props) {
   return (
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>{props.icon}</ListItemIcon>
-        <ListItemText>{props.item}</ListItemText>
+        <ListItemText>
+          <Link underline="hover" color="inherit" href={props.path}>
+            {props.item}
+          </Link>
+        </ListItemText>
       </ListItemButton>
     </ListItem>
   );
