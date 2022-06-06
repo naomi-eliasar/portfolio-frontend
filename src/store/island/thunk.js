@@ -1,7 +1,67 @@
 import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/slice";
-import { startLoading, islandFetched, islandUpdated } from "./slice";
+import {
+  startLoading,
+  islandFetched,
+  islandUpdated,
+  islandAdded,
+  islandDeleted,
+} from "./slice";
 import { showMessageWithTimeout } from "../appState/actions";
+
+export const deleteIsland = (id) => async (dispatch, getState) => {
+  try {
+    dispatch(appLoading());
+    const response = await axios.delete(`http://localhost:4000/islands/${id}`);
+    console.log("delete thunk", response.data);
+    dispatch(islandDeleted({ islandId: id }));
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const addIsland =
+  ({
+    name,
+    description,
+    starterFruit,
+    starterFlower,
+    backgroundColor,
+    textColor,
+  }) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      const userId = getState().user.profile.id;
+      dispatch(appLoading());
+      const response = await axios.post(
+        `http://localhost:4000/islands/`,
+        {
+          name,
+          description,
+          starterFruit,
+          starterFlower,
+          backgroundColor,
+          textColor,
+          userId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      dispatch(islandAdded(response.data));
+      dispatch(
+        showMessageWithTimeout("succes", true, "Artwork action created")
+      );
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
 
 export const updateMyIsland = (
   name,

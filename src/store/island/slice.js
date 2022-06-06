@@ -23,10 +23,23 @@ export const islandSlice = createSlice({
       };
       state.loading = false;
     },
+    islandAdded: (state, action) => {
+      state.islands = [...state.islands, action.payload];
+      state.loading = false;
+    },
+    islandDeleted: (state, action) => {
+      const islandId = action.payload.islandId;
+      state.islands = state.islands.filter((island) => island.id !== islandId);
+    },
   },
 });
 
-export const { startLoading, islandFetched, islandUpdated } =
-  islandSlice.actions;
+export const {
+  startLoading,
+  islandFetched,
+  islandUpdated,
+  islandAdded,
+  islandDeleted,
+} = islandSlice.actions;
 
 export default islandSlice.reducer;

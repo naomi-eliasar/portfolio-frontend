@@ -1,7 +1,7 @@
 import "./styles.css";
 import { Link } from "react-router-dom";
 
-const IslandCard = ({ id, name, description }) => {
+const IslandCard = ({ id, name, description, btn }) => {
   return (
     <div className="islandCard" key={id}>
       <div className="islandCardInfo">
@@ -11,6 +11,7 @@ const IslandCard = ({ id, name, description }) => {
           </Link>
           <p>{description}</p>
         </h2>
+        {btn}
       </div>
     </div>
   );

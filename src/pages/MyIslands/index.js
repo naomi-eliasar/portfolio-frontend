@@ -6,6 +6,8 @@ import { fetchUserIslands } from "../../store/user/actions";
 import { Grid, Box, Modal, Button, Typography } from "@mui/material";
 import { HeroBanner } from "../../components";
 import { IslandCard } from "../../components/IslandCard";
+import { AddIslandForm } from "./addIslandForm";
+import { deleteIsland } from "../../store/island/thunk";
 
 const MyIslands = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,11 @@ const MyIslands = () => {
   useEffect(() => {
     dispatch(fetchUserIslands(user.id));
   }, [dispatch, user.id]);
+
+  const onDeleteClick = (id) => {
+    console.log("delete clicked?", id);
+    dispatch(deleteIsland(id));
+  };
 
   return userIsland ? (
     <div className="myIslandsPage">
@@ -49,7 +56,7 @@ const MyIslands = () => {
             >
               <Box>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Test
+                  <AddIslandForm />
                 </Typography>
               </Box>
             </Modal>
@@ -67,6 +74,15 @@ const MyIslands = () => {
                   id={island.id}
                   name={island.name}
                   description={island.description}
+                  btn={
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#009a7e" }}
+                      onClick={() => onDeleteClick(island.id)}
+                    >
+                      Delete Island
+                    </Button>
+                  }
                 />
               </Grid>
             );

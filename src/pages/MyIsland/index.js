@@ -41,22 +41,28 @@ const MyIsland = () => {
           minHeight: "200px",
         }}
       >
-        <Grid item xs={8}>
+        <Grid item xs={7}>
           <h1>{islandDetails.name}</h1>
           <h5>"{islandDetails.description}"</h5>
         </Grid>
-        <Grid item xs={2}>
+
+        <Grid item xs={1}>
           <img
             src={islandDetails.starterFruit}
             alt="Starter Fruit"
             width="100px"
           />
+        </Grid>
+        <Grid item xs={1}>
           <img
             src={islandDetails.starterFlower}
             alt="Starter Flower"
             width="100px"
           />
         </Grid>
+
+        <Grid item xs={1}></Grid>
+
         <Grid item xs={2}>
           <Button
             onClick={handleOpen}
