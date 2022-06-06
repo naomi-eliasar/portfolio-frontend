@@ -1,3 +1,4 @@
+import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { selectUser, selectUserIslands } from "../../store/user/selectors";
@@ -21,31 +22,40 @@ const MyIslands = () => {
   }, [dispatch, user.id]);
 
   return userIsland ? (
-    <div>
+    <div className="myIslandsPage">
       <HeroBanner>
-        <h1>Welcome {user.name}!</h1>
+        <Grid
+          container
+          spacing={2}
+          alignItems="center"
+          pl={18}
+          style={{ minHeight: "200px" }}
+        >
+          <Grid item xs={8}>
+            <h1>Welcome {user.name}!</h1>
+          </Grid>
+          <Grid item xs={2}>
+            <Button
+              onClick={handleOpen}
+              variant="contained"
+              style={{ backgroundColor: "#009a7e" }}
+            >
+              Add Island
+            </Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+            >
+              <Box>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Test
+                </Typography>
+              </Box>
+            </Modal>
+          </Grid>
+        </Grid>
       </HeroBanner>
-
-      <div className="addButton">
-        <Button
-          onClick={handleOpen}
-          variant="contained"
-          style={{ backgroundColor: "#009a7e" }}
-        >
-          Add Island
-        </Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-        >
-          <Box>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              Test
-            </Typography>
-          </Box>
-        </Modal>
-      </div>
 
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} alignItems="center">

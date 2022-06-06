@@ -38,7 +38,7 @@ export const updateMyIsland = (
         showMessageWithTimeout("succes", false, "update successfull", 3000)
       );
       dispatch(islandUpdated(response.data));
-      console.log("island updated", response.data.island);
+      console.log("island updated", response.data);
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);

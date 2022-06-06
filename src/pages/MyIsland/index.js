@@ -85,9 +85,6 @@ const MyIsland = () => {
       <div className="displayResidents">
         <h3>Residents</h3>
       </div>
-      <div className="displayDreamies">
-        <h3>Dreamies</h3>
-      </div>
     </div>
   ) : (
     <p>Loading...</p>

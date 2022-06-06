@@ -83,7 +83,8 @@ const EditIslandForm = ({ handleClose }) => {
             <Form.Label>Starter Flower</Form.Label>
             <Form.Check>
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Cosmos"
                 value={starterFlower}
@@ -94,7 +95,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Hyacinths"
                 value={starterFlower}
@@ -105,7 +107,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Lillies"
                 value={starterFlower}
@@ -116,7 +119,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Mums"
                 value={starterFlower}
@@ -127,7 +131,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Pansies"
                 value={starterFlower}
@@ -138,7 +143,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Roses"
                 value={starterFlower}
@@ -149,7 +155,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Tulips"
                 value={starterFlower}
@@ -160,7 +167,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group1"
                 inline
                 label="Windflowers"
                 value={starterFlower}
@@ -177,7 +185,8 @@ const EditIslandForm = ({ handleClose }) => {
             <Form.Label>Starter Fruit</Form.Label>
             <Form.Check>
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group2"
                 inline
                 label="Apple"
                 value={starterFruit}
@@ -188,7 +197,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group2"
                 inline
                 label="Cherry"
                 value={starterFruit}
@@ -199,7 +209,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group2"
                 inline
                 label="Orange"
                 value={starterFruit}
@@ -210,7 +221,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group2"
                 inline
                 label="Peach"
                 value={starterFruit}
@@ -221,7 +233,8 @@ const EditIslandForm = ({ handleClose }) => {
                 }
               />
               <Form.Check
-                type="checkbox"
+                type="radio"
+                name="group2"
                 inline
                 label="Pear"
                 value={starterFruit}
