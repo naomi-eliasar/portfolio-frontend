@@ -11,7 +11,7 @@ const MyIslands = () => {
   const user = useSelector(selectUser);
   const userIsland = useSelector(selectUserIslands);
 
-  console.log("user islands", userIsland);
+  console.log("my islands", userIsland);
 
   useEffect(() => {
     dispatch(fetchUserIslands(user.id));

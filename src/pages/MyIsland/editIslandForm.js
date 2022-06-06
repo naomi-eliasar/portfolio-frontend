@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Form, Col, Container } from "react-bootstrap";
 import Button from "@mui/material/Button";
 import { Field } from "../../components";
-import { selectUserIslands } from "../../store/user/selectors";
-import { updateMyIsland } from "../../store/user/actions";
+import { selectIsland } from "../../store/island/selector";
+import { updateMyIsland } from "../../store/island/thunk";
 
-const EditIslandForm = () => {
-  const islands = useSelector(selectUserIslands);
+const EditIslandForm = ({ handleClose }) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState(islands.name);
-  const [description, setDescription] = useState(islands.description || "");
-  const [starterFruit, setStarterFruit] = useState(islands.starterFruit);
-  const [starterFlower, setStarterFlower] = useState(islands.starterFlower);
-  const [backgroundColor, setBackgroundColor] = useState(
-    islands.backgroundColor
+  const navigate = useNavigate();
+  const islandDetails = useSelector(selectIsland);
+
+  const [name, setName] = useState(islandDetails.name);
+  const [description, setDescription] = useState(
+    islandDetails.description || ""
   );
-  const [textColor, setTextColor] = useState(islands.textColor);
+  const [starterFruit, setStarterFruit] = useState(islandDetails.starterFruit);
+  const [starterFlower, setStarterFlower] = useState(
+    islandDetails.starterFlower
+  );
+  const [backgroundColor, setBackgroundColor] = useState(
+    islandDetails.backgroundColor
+  );
+  const [textColor, setTextColor] = useState(islandDetails.textColor);
+
+  console.log("edit island", islandDetails);
+  console.log("island id", islandDetails.id);
 
   function submitForm(event) {
     event.preventDefault();
@@ -39,6 +49,8 @@ const EditIslandForm = () => {
         textColor
       )
     );
+    dispatch(handleClose);
+    navigate(`/myislands/${islandDetails.id}`);
   }
 
   return (

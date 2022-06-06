@@ -13,7 +13,7 @@ export default function DrawerItem(props) {
       <ListItemButton>
         <ListItemIcon>{props.icon}</ListItemIcon>
         <ListItemText>
-          <Link underline="hover" color="inherit" path={props.path}>
+          <Link underline="hover" color="inherit" href={props.path}>
             {props.item}
           </Link>
         </ListItemText>

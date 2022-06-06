@@ -5,7 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { selectUser } from "../../store/user/selectors";
 import { selectIsland } from "../../store/island/selector";
 import { fetchIsland } from "../../store/island/thunk";
-import { Grid } from "@mui/material";
+import { Grid, Modal, Button, Typography, Box } from "@mui/material";
+import { EditIslandForm } from "./editIslandForm";
 
 const MyIsland = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,15 @@ const MyIsland = () => {
   const routeParams = useParams();
   const user = useSelector(selectUser);
   const islandDetails = useSelector(selectIsland);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   if (user === null) {
     navigate("/");
   }
+
+  console.log("my island", islandDetails);
 
   useEffect(() => {
     dispatch(fetchIsland(routeParams.id));
@@ -48,6 +54,32 @@ const MyIsland = () => {
           <p>{islandDetails.starterFlower}</p>
         </Grid>
       </Grid>
+
+      <div className="editButtons">
+        <Button
+          onClick={handleOpen}
+          variant="contained"
+          style={{ backgroundColor: "#009a7e" }}
+        >
+          Edit Island
+        </Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              <EditIslandForm
+                handleClose={handleClose}
+                islandId={islandDetails.id}
+              />
+            </Typography>
+          </Box>
+        </Modal>
+      </div>
+
       <div className="displayAchievements">
         <h3>Achievements</h3>
       </div>

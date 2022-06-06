@@ -26,18 +26,10 @@ export const userSlice = createSlice({
     userIslandsFetched: (state, action) => {
       state.userIslands = action.payload;
     },
-    islandUpdated: (state, action) => {
-      state.userIslands = { ...action.payload, islands: state.userIslands };
-    },
   },
 });
 
-export const {
-  loginSuccess,
-  logOut,
-  tokenStillValid,
-  userIslandsFetched,
-  islandUpdated,
-} = userSlice.actions;
+export const { loginSuccess, logOut, tokenStillValid, userIslandsFetched } =
+  userSlice.actions;
 
 export default userSlice.reducer;
