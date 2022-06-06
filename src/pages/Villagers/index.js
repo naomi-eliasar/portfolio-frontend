@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { Searchbar, VillagerCard } from "../../components";
 import "./styles.css";
 import { useState } from "react";
