@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Form, Col, Container } from "react-bootstrap";
 import Button from "@mui/material/Button";
 import { Field } from "../../components";
 import { selectIsland } from "../../store/island/selector";
 import { updateMyIsland } from "../../store/island/thunk";
+import { fetchIsland } from "../../store/island/thunk";
+import { useParams } from "react-router-dom";
 
 const EditIslandForm = ({ handleClose }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const islandDetails = useSelector(selectIsland);
 
   const [name, setName] = useState(islandDetails.name);
@@ -28,7 +28,9 @@ const EditIslandForm = ({ handleClose }) => {
   console.log("edit island", islandDetails);
   console.log("island id", islandDetails.id);
 
-  function submitForm(event) {
+  const routeParams = useParams();
+
+  const submitForm = (event) => {
     event.preventDefault();
     console.log(
       name,
@@ -50,8 +52,7 @@ const EditIslandForm = ({ handleClose }) => {
       )
     );
     dispatch(handleClose);
-    navigate(`/myislands/${islandDetails.id}`);
-  }
+  };
 
   return (
     <Container>

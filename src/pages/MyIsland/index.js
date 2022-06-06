@@ -71,10 +71,7 @@ const MyIsland = () => {
         >
           <Box>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              <EditIslandForm
-                handleClose={handleClose}
-                islandId={islandDetails.id}
-              />
+              <EditIslandForm handleClose={handleClose} />
             </Typography>
           </Box>
         </Modal>
