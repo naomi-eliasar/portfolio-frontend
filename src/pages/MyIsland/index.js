@@ -22,11 +22,11 @@ const MyIsland = () => {
     navigate("/");
   }
 
-  console.log("my island", islandDetails);
-
   useEffect(() => {
     dispatch(fetchIsland(routeParams.id));
   }, [dispatch, routeParams.id]);
+
+  console.log("my island", islandDetails);
 
   return islandDetails ? (
     <div className="islandPage">
@@ -46,36 +46,38 @@ const MyIsland = () => {
           <h5>"{islandDetails.description}"</h5>
         </Grid>
         <Grid item xs={2}>
-          <p>Starter fruit:</p>
-          <p>{islandDetails.starterFruit}</p>
+          <img
+            src={islandDetails.starterFruit}
+            alt="Starter Fruit"
+            width="100px"
+          />
+          <img
+            src={islandDetails.starterFlower}
+            alt="Starter Flower"
+            width="100px"
+          />
         </Grid>
         <Grid item xs={2}>
-          <p>Starter flower:</p>
-          <p>{islandDetails.starterFlower}</p>
+          <Button
+            onClick={handleOpen}
+            variant="contained"
+            style={{ backgroundColor: "#009a7e" }}
+          >
+            Edit Island
+          </Button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+          >
+            <Box>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                <EditIslandForm handleClose={handleClose} />
+              </Typography>
+            </Box>
+          </Modal>
         </Grid>
       </Grid>
-
-      <div className="editButtons">
-        <Button
-          onClick={handleOpen}
-          variant="contained"
-          style={{ backgroundColor: "#009a7e" }}
-        >
-          Edit Island
-        </Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              <EditIslandForm handleClose={handleClose} />
-            </Typography>
-          </Box>
-        </Modal>
-      </div>
 
       <div className="displayAchievements">
         <h3>Achievements</h3>

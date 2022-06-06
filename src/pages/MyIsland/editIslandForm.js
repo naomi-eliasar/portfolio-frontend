@@ -52,6 +52,7 @@ const EditIslandForm = ({ handleClose }) => {
       )
     );
     dispatch(handleClose);
+    dispatch(fetchIsland(routeParams.id));
   };
 
   return (
@@ -77,35 +78,162 @@ const EditIslandForm = ({ handleClose }) => {
               placeholder="Description of your island"
             />
           </Form.Group>
+
           <Form.Group>
             <Form.Label>Starter Flower</Form.Label>
-            <Form.Select
-              value={starterFlower}
-              onChange={(event) => setStarterFlower(event.target.value)}
-            >
-              <option>Cosmos</option>
-              <option>Hyacinths</option>
-              <option>Lillies</option>
-              <option>Mums</option>
-              <option>Pansies</option>
-              <option>Roses</option>
-              <option>Tulips</option>
-              <option>Windflowers</option>
-            </Form.Select>
+            <Form.Check>
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Cosmos"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-cosmos.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Hyacinths"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-hyacinths.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Lillies"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-lilies.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Mums"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-mums.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Pansies"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-pansies.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Roses"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-roses.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Tulips"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-tulips.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Windflowers"
+                value={starterFlower}
+                onChange={() =>
+                  setStarterFlower(
+                    "https://acnh.co/assets/img/nintendo-switch-acnh-flowers/white-windflowers.png"
+                  )
+                }
+              />
+            </Form.Check>
           </Form.Group>
+
           <Form.Group>
             <Form.Label>Starter Fruit</Form.Label>
-            <Form.Select
-              value={starterFruit}
-              onChange={(event) => setStarterFruit(event.target.value)}
-            >
-              <option>Apple</option>
-              <option>Cherry</option>
-              <option>Orange</option>
-              <option>Peach</option>
-              <option>Pear</option>
-            </Form.Select>
+            <Form.Check>
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Apple"
+                value={starterFruit}
+                onChange={() =>
+                  setStarterFruit(
+                    "https://www.models-resource.com/resources/big_icons/36/35108.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Cherry"
+                value={starterFruit}
+                onChange={() =>
+                  setStarterFruit(
+                    "https://www.models-resource.com/resources/big_icons/36/35111.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Orange"
+                value={starterFruit}
+                onChange={() =>
+                  setStarterFruit(
+                    "https://www.models-resource.com/resources/big_icons/36/35113.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Peach"
+                value={starterFruit}
+                onChange={() =>
+                  setStarterFruit(
+                    "https://www.models-resource.com/resources/big_icons/36/35114.png"
+                  )
+                }
+              />
+              <Form.Check
+                type="checkbox"
+                inline
+                label="Pear"
+                value={starterFruit}
+                onChange={() =>
+                  setStarterFruit(
+                    "https://www.models-resource.com/resources/big_icons/36/35112.png"
+                  )
+                }
+              />
+            </Form.Check>
           </Form.Group>
+
           <Form.Group>
             <Form.Label>Background color</Form.Label>
             <Form.Control
