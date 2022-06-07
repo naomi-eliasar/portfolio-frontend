@@ -32,6 +32,13 @@ export const userSlice = createSlice({
         (island) => island.id !== islandId
       );
     },
+    userIslandAdded: (state, action) => {
+      state.userIslands.islands = [
+        ...state.userIslands.islands,
+        action.payload,
+      ];
+      state.loading = false;
+    },
   },
 });
 
@@ -41,6 +48,7 @@ export const {
   tokenStillValid,
   userIslandsFetched,
   userIslandDeleted,
+  userIslandAdded,
 } = userSlice.actions;
 
 export default userSlice.reducer;

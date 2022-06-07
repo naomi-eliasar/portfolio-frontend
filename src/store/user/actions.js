@@ -9,7 +9,51 @@ import {
   tokenStillValid,
   userIslandsFetched,
 } from "./slice";
-import { userIslandDeleted } from "./slice";
+import { userIslandDeleted, userIslandAdded } from "./slice";
+
+export const addUserIsland =
+  ({
+    name,
+    description,
+    starterFruit,
+    starterFlower,
+    backgroundColor,
+    textColor,
+  }) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      const userId = getState().user.profile.id;
+      console.log("thunk userId", userId);
+      dispatch(appLoading());
+      const response = await axios.post(
+        `http://localhost:4000/islands/`,
+        {
+          name,
+          description,
+          starterFruit,
+          starterFlower,
+          backgroundColor,
+          textColor,
+          userId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("thunk add island", response.data);
+
+      dispatch(showMessageWithTimeout("succes", true, "Island created"));
+      dispatch(userIslandAdded(response.data));
+      console.log("island added", userIslandAdded(response.data));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
 
 export const deleteMyIsland = (id) => async (dispatch, getState) => {
   try {

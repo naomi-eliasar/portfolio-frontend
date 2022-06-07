@@ -5,73 +5,52 @@ import {
   islandFetched,
   islandUpdated,
   islandAdded,
-  islandDeleted,
 } from "./slice";
 import { showMessageWithTimeout } from "../appState/actions";
 
-// export const deleteIsland = (id) => async (dispatch, getState) => {
-//   try {
-//     const { token } = getState().user;
-//     dispatch(appLoading());
-//     const response = await axios.delete(`http://localhost:4000/islands/${id}`, {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     console.log("delete thunk", response.data);
+// export const addIsland =
+//   ({
+//     name,
+//     description,
+//     starterFruit,
+//     starterFlower,
+//     backgroundColor,
+//     textColor,
+//   }) =>
+//   async (dispatch, getState) => {
+//     try {
+//       const { token } = getState().user;
+//       const userId = getState().user.profile.id;
+//       console.log("thunk userId", userId);
+//       dispatch(appLoading());
+//       const response = await axios.post(
+//         `http://localhost:4000/islands/`,
+//         {
+//           name,
+//           description,
+//           starterFruit,
+//           starterFlower,
+//           backgroundColor,
+//           textColor,
+//           userId,
+//         },
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+//       console.log("thunk add island", response.data);
 
-//     dispatch(islandDeleted({ islandId: id }));
-
-//     dispatch(appDoneLoading());
-//   } catch (e) {
-//     console.log(e.message);
-//     dispatch(appDoneLoading());
-//   }
-// };
-
-export const addIsland =
-  ({
-    name,
-    description,
-    starterFruit,
-    starterFlower,
-    backgroundColor,
-    textColor,
-  }) =>
-  async (dispatch, getState) => {
-    try {
-      const { token } = getState().user;
-      const userId = getState().user.profile.id;
-      console.log("thunk userId", userId);
-      dispatch(appLoading());
-      const response = await axios.post(
-        `http://localhost:4000/islands/`,
-        {
-          name,
-          description,
-          starterFruit,
-          starterFlower,
-          backgroundColor,
-          textColor,
-          userId,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("thunk add island", response.data);
-
-      dispatch(showMessageWithTimeout("succes", true, "Island created"));
-      dispatch(islandAdded(response.data));
-      console.log("island added", islandAdded(response.data));
-      dispatch(appDoneLoading());
-    } catch (e) {
-      console.log(e.message);
-      dispatch(appDoneLoading());
-    }
-  };
+//       dispatch(showMessageWithTimeout("succes", true, "Island created"));
+//       dispatch(islandAdded(response.data));
+//       console.log("island added", islandAdded(response.data));
+//       dispatch(appDoneLoading());
+//     } catch (e) {
+//       console.log(e.message);
+//       dispatch(appDoneLoading());
+//     }
+//   };
 
 export const updateMyIsland = (
   name,

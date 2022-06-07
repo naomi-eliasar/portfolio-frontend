@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Col, Container } from "react-bootstrap";
 import Button from "@mui/material/Button";
 import { Field } from "../../components";
-import { addIsland } from "../../store/island/thunk";
+// import { addIsland } from "../../store/island/thunk";
+import { addUserIsland } from "../../store/user/actions";
 import { fetchIsland } from "../../store/island/thunk";
 import { useParams } from "react-router-dom";
 import { fetchUserIslands } from "../../store/user/actions";
@@ -37,7 +38,8 @@ const AddIslandForm = ({ handleClose }) => {
 
     console.log("new island", newIsland);
 
-    dispatch(addIsland(newIsland));
+    dispatch(addUserIsland(newIsland));
+
     dispatch(handleClose);
     dispatch(fetchUserIslands(user.id));
     setName("");

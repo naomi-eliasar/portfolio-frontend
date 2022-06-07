@@ -7,7 +7,6 @@ import { Grid, Box, Modal, Button, Typography } from "@mui/material";
 import { HeroBanner } from "../../components";
 import { IslandCard } from "../../components/IslandCard";
 import { AddIslandForm } from "./addIslandForm";
-import { deleteIsland } from "../../store/island/thunk";
 import { deleteMyIsland } from "../../store/user/actions";
 
 const MyIslands = () => {
@@ -58,7 +57,7 @@ const MyIslands = () => {
             >
               <Box>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                  <AddIslandForm />
+                  <AddIslandForm handleClose={handleClose} />
                 </Typography>
               </Box>
             </Modal>
