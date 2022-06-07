@@ -9,6 +9,27 @@ import {
   tokenStillValid,
   userIslandsFetched,
 } from "./slice";
+import { userIslandDeleted } from "./slice";
+
+export const deleteMyIsland = (id) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().user;
+    dispatch(appLoading());
+    const response = await axios.delete(`http://localhost:4000/islands/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("delete thunk", response.data);
+
+    dispatch(userIslandDeleted({ islandId: id }));
+
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+    dispatch(appDoneLoading());
+  }
+};
 
 export function fetchUserIslands(id) {
   return async function (dispatch) {

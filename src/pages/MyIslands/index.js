@@ -8,6 +8,7 @@ import { HeroBanner } from "../../components";
 import { IslandCard } from "../../components/IslandCard";
 import { AddIslandForm } from "./addIslandForm";
 import { deleteIsland } from "../../store/island/thunk";
+import { deleteMyIsland } from "../../store/user/actions";
 
 const MyIslands = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const MyIslands = () => {
 
   const onDeleteClick = (id) => {
     console.log("delete clicked?", id);
-    dispatch(deleteIsland(id));
+    dispatch(deleteMyIsland(id));
   };
 
   return userIsland ? (
@@ -37,6 +38,7 @@ const MyIslands = () => {
           alignItems="center"
           pl={18}
           style={{ minHeight: "200px" }}
+          key={userIsland.id}
         >
           <Grid item xs={8}>
             <h1>Welcome {user.name}!</h1>

@@ -26,10 +26,21 @@ export const userSlice = createSlice({
     userIslandsFetched: (state, action) => {
       state.userIslands = action.payload;
     },
+    userIslandDeleted: (state, action) => {
+      const islandId = action.payload.islandId;
+      state.userIslands.islands = state.userIslands.islands.filter(
+        (island) => island.id !== islandId
+      );
+    },
   },
 });
 
-export const { loginSuccess, logOut, tokenStillValid, userIslandsFetched } =
-  userSlice.actions;
+export const {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  userIslandsFetched,
+  userIslandDeleted,
+} = userSlice.actions;
 
 export default userSlice.reducer;

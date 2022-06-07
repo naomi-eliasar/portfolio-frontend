@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Col, Container } from "react-bootstrap";
 import Button from "@mui/material/Button";
 import { Field } from "../../components";
 import { addIsland } from "../../store/island/thunk";
 import { fetchIsland } from "../../store/island/thunk";
 import { useParams } from "react-router-dom";
+import { fetchUserIslands } from "../../store/user/actions";
+import { selectUser } from "../../store/user/selectors";
 
 const AddIslandForm = ({ handleClose }) => {
   const dispatch = useDispatch();
   const routeParams = useParams();
+  const user = useSelector(selectUser);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -17,6 +20,8 @@ const AddIslandForm = ({ handleClose }) => {
   const [starterFlower, setStarterFlower] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("");
   const [textColor, setTextColor] = useState("");
+
+  console.log("user id", user.id);
 
   const submitForm = (event) => {
     event.preventDefault();
@@ -34,15 +39,13 @@ const AddIslandForm = ({ handleClose }) => {
 
     dispatch(addIsland(newIsland));
     dispatch(handleClose);
-
+    dispatch(fetchUserIslands(user.id));
     setName("");
     setDescription("");
     setStarterFruit("");
     setStarterFlower("");
     setBackgroundColor("");
     setTextColor("");
-
-    dispatch(fetchIsland(routeParams.id));
   };
 
   return (

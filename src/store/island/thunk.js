@@ -9,17 +9,25 @@ import {
 } from "./slice";
 import { showMessageWithTimeout } from "../appState/actions";
 
-export const deleteIsland = (id) => async (dispatch, getState) => {
-  try {
-    dispatch(appLoading());
-    const response = await axios.delete(`http://localhost:4000/islands/${id}`);
-    console.log("delete thunk", response.data);
-    dispatch(islandDeleted({ islandId: id }));
-    dispatch(appDoneLoading());
-  } catch (e) {
-    console.log(e.message);
-  }
-};
+// export const deleteIsland = (id) => async (dispatch, getState) => {
+//   try {
+//     const { token } = getState().user;
+//     dispatch(appLoading());
+//     const response = await axios.delete(`http://localhost:4000/islands/${id}`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     console.log("delete thunk", response.data);
+
+//     dispatch(islandDeleted({ islandId: id }));
+
+//     dispatch(appDoneLoading());
+//   } catch (e) {
+//     console.log(e.message);
+//     dispatch(appDoneLoading());
+//   }
+// };
 
 export const addIsland =
   ({
@@ -34,6 +42,7 @@ export const addIsland =
     try {
       const { token } = getState().user;
       const userId = getState().user.profile.id;
+      console.log("thunk userId", userId);
       dispatch(appLoading());
       const response = await axios.post(
         `http://localhost:4000/islands/`,
@@ -52,14 +61,15 @@ export const addIsland =
           },
         }
       );
+      console.log("thunk add island", response.data);
 
+      dispatch(showMessageWithTimeout("succes", true, "Island created"));
       dispatch(islandAdded(response.data));
-      dispatch(
-        showMessageWithTimeout("succes", true, "Artwork action created")
-      );
+      console.log("island added", islandAdded(response.data));
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
+      dispatch(appDoneLoading());
     }
   };
 
@@ -102,6 +112,7 @@ export const updateMyIsland = (
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
+      dispatch(appDoneLoading());
     }
   };
 };

@@ -23,14 +23,21 @@ export const islandSlice = createSlice({
       };
       state.loading = false;
     },
+    // islandAdded: (state, action) => {
+    //   state.islands = {
+    //     ...action.payload,
+    //     islands: state.islands,
+    //   };
+    //   state.loading = false;
+    // },
     islandAdded: (state, action) => {
       state.islands = [...state.islands, action.payload];
       state.loading = false;
     },
-    islandDeleted: (state, action) => {
-      const islandId = action.payload.islandId;
-      state.islands = state.islands.filter((island) => island.id !== islandId);
-    },
+    // islandDeleted: (state, action) => {
+    //   const islandId = action.payload.islandId;
+    //   state.islands = state.islands.filter((island) => island.id !== islandId);
+    // },
   },
 });
 
