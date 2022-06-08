@@ -13,7 +13,7 @@ const Residents = () => {
   const islands = useSelector(selectIsland);
 
   console.log("user", user);
-  console.log("user id", user.id);
+  console.log(" user id", user.id);
   console.log("residents", residents);
   console.log("islands", islands);
 

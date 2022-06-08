@@ -5,7 +5,7 @@ const initialState = {
   profile: null,
   userIslands: [],
   userDreamies: [],
-  userResidents: null,
+  userResidents: [],
 };
 
 export const userSlice = createSlice({

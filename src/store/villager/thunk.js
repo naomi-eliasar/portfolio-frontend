@@ -57,21 +57,22 @@ export function fetchDreamies() {
         }
       );
       const dreamies = responsedb.data;
-      console.log("thunk dreamies response", dreamies);
+      // console.log("thunk dreamies response", dreamies);
 
       const dreamiesArray = await Promise.all(
         dreamies.map(async (dreamie) => {
           const responseapi = await axios.get(
             `${API_URL}&name=${dreamie.villager}`
           );
-          console.log("thunk response api", responseapi.data);
+          // console.log("thunk response api", responseapi.data);
           return responseapi.data;
         })
       );
 
       const relevantData = dreamiesArray.map((item) => item[0]);
-      // const mapped = relevantData.map((item) => item[0]);
       console.log("thunk data dreamies response", relevantData);
+
+      // const mapped = relevantData.map((item) => item[0]);
       // console.log("mapped data", mapped);
 
       dispatch(userDreamiesFetched(relevantData));
@@ -101,12 +102,14 @@ export function fetchResidents() {
         }
       );
       const residents = responsedb.data;
+      console.log("thunk residents", residents);
 
       const residentsArray = await Promise.all(
         residents.map(async (resident) => {
           const responseapi = await axios.get(
-            `${API_URL}&name=${resident.villagerId}`
+            `${API_URL}&name=${resident.villager}`
           );
+          console.log("thunk response api", responseapi.data);
           return responseapi;
         })
       );
