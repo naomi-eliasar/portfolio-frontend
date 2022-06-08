@@ -127,7 +127,6 @@ const MyIslands = () => {
         </Grid>
       </Box>
       <Dreamies />
-      <Residents />
     </div>
   ) : (
     <p>Loading...</p>

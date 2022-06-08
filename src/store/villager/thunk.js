@@ -90,7 +90,9 @@ export function fetchResidents() {
       dispatch(appLoading());
       dispatch(startLoading());
       const { token } = getState().user;
-      console.log("token", token);
+      const islandId = getState().island.id;
+
+      console.log("island id in thunk");
 
       const responsedb = await axios.get(
         `http://localhost:4000/villagers/residents`,
@@ -100,8 +102,8 @@ export function fetchResidents() {
           },
         }
       );
-      const residents = responsedb.data;
       console.log("thunk resident response", responsedb);
+      const residents = responsedb.data;
       console.log("thunk residents", residents);
 
       const residentsArray = await Promise.all(
@@ -109,7 +111,8 @@ export function fetchResidents() {
           const responseapi = await axios.get(
             `${API_URL}&name=${resident.villager}`
           );
-          console.log("thunk response api", responseapi.data);
+          console.log("islandId", resident.islandId);
+          console.log("island id", islandId);
           return responseapi.data;
         })
       );
