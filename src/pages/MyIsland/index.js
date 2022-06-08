@@ -2,11 +2,13 @@ import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Grid, Modal, Button, Typography, Box, Divider } from "@mui/material";
+
 import { selectUser } from "../../store/user/selectors";
 import { selectIsland } from "../../store/island/selector";
 import { fetchIsland } from "../../store/island/thunk";
-import { Grid, Modal, Button, Typography, Box } from "@mui/material";
 import { EditIslandForm } from "./editIslandForm";
+import { Residents } from "../Residents";
 
 const MyIsland = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const MyIsland = () => {
   console.log("my island", islandDetails);
 
   return islandDetails ? (
-    <div className="islandPage">
+    <div>
       <Grid
         container
         spacing={2}
@@ -85,12 +87,46 @@ const MyIsland = () => {
         </Grid>
       </Grid>
 
-      <div className="displayAchievements">
-        <h3>Achievements</h3>
+      <Divider />
+
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          style={{
+            backgroundColor: `${islandDetails.backgroundColor}`,
+            color: `${islandDetails.textColor}`,
+          }}
+          pl={2}
+          pt={1}
+          minHeight="30px"
+        >
+          <Grid item xs={12}>
+            <h1>Achievements</h1>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <div>
+        <p></p>
       </div>
-      <div className="displayResidents">
-        <h3>Residents</h3>
-      </div>
+
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          style={{
+            backgroundColor: `${islandDetails.backgroundColor}`,
+            color: `${islandDetails.textColor}`,
+          }}
+          pl={2}
+          pt={1}
+          minHeight="30px"
+        >
+          <Grid item xs={12}>
+            <h1>Residents</h1>
+          </Grid>
+        </Grid>
+      </Box>
+      <Residents />
     </div>
   ) : (
     <p>Loading...</p>

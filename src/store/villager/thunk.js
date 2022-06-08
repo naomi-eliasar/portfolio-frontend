@@ -6,6 +6,7 @@ import {
   villagerSpeciesFetched,
 } from "./slice";
 import { appLoading, appDoneLoading } from "../appState/slice";
+import { userDreamiesFetched, userResidentsFetched } from "../user/slice";
 
 const API_KEY = process.env.REACT_APP_NOOKIPEDIA_API_KEY;
 const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetails=true&game=NH`;
@@ -15,7 +16,7 @@ export async function fetchVillagers(dispatch, getState) {
     dispatch(appLoading());
     dispatch(startLoading());
     const response = await axios.get(`${API_URL}`);
-    console.log("thunk response", response.data);
+    console.log("thunk villagers response", response.data);
     dispatch(villagersFetched(response.data));
     dispatch(appDoneLoading());
   } catch (e) {
@@ -33,6 +34,86 @@ export function fetchVillagerDetails(name) {
       const details = response.data;
       console.log("thunk details response", details);
       dispatch(villagerDetailsFetched(response.data));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
+}
+
+export function fetchDreamies() {
+  return async function (dispatch, getState) {
+    try {
+      dispatch(appLoading());
+      dispatch(startLoading());
+      const { token } = getState().user;
+      const responsedb = await axios.get(
+        `http://localhost:4000/villagers/dreamies`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const dreamies = responsedb.data;
+      console.log("thunk dreamies response", dreamies);
+
+      const dreamiesArray = await Promise.all(
+        dreamies.map(async (dreamie) => {
+          const responseapi = await axios.get(
+            `${API_URL}&name=${dreamie.villagerId}`
+          );
+          return responseapi;
+        })
+      );
+
+      const relevantData = dreamiesArray.map((item) => item.data);
+      const mapped = relevantData.map((item) => item[0]);
+      console.log("thunk mapped dreamies response", mapped);
+
+      dispatch(userDreamiesFetched(mapped));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
+}
+
+export function fetchResidents() {
+  return async function (dispatch, getState) {
+    try {
+      dispatch(appLoading());
+      dispatch(startLoading());
+      const { token } = getState().user;
+      const islandId = getState().island.islands.id;
+      console.log("thunk island id", islandId);
+
+      const responsedb = await axios.get(
+        `http://localhost:4000/villagers/residents`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const residents = responsedb.data;
+
+      const residentsArray = await Promise.all(
+        residents.map(async (resident) => {
+          const responseapi = await axios.get(
+            `${API_URL}&name=${resident.villagerId}`
+          );
+          return responseapi;
+        })
+      );
+
+      const relevantData = residentsArray.map((item) => item.data);
+      const mapped = relevantData.map((item) => item[0]);
+      console.log("thunk resident response", mapped);
+
+      dispatch(userResidentsFetched(mapped));
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);

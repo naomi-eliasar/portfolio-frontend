@@ -4,6 +4,8 @@ const initialState = {
   token: localStorage.getItem("token"),
   profile: null,
   userIslands: [],
+  userDreamies: [],
+  userResidents: null,
 };
 
 export const userSlice = createSlice({
@@ -39,6 +41,12 @@ export const userSlice = createSlice({
       ];
       state.loading = false;
     },
+    userDreamiesFetched: (state, action) => {
+      state.userDreamies = action.payload;
+    },
+    userResidentsFetched: (state, action) => {
+      state.userResidents = action.payload;
+    },
   },
 });
 
@@ -49,6 +57,8 @@ export const {
   userIslandsFetched,
   userIslandDeleted,
   userIslandAdded,
+  userDreamiesFetched,
+  userResidentsFetched,
 } = userSlice.actions;
 
 export default userSlice.reducer;

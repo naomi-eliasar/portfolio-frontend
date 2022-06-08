@@ -8,8 +8,32 @@ import {
   logOut,
   tokenStillValid,
   userIslandsFetched,
+  userDreamiesFetched,
 } from "./slice";
 import { userIslandDeleted, userIslandAdded } from "./slice";
+
+// export function fetchUserDreamies(id) {
+//   return async function (dispatch, getState) {
+//     try {
+//       const { token } = getState().user;
+//       dispatch(appLoading());
+//       const response = await axios.get(
+//         `http://localhost:4000/villagers/dreamies/${id}`,
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+//       console.log("thunk dreamie response", response.data);
+//       dispatch(userDreamiesFetched(response.data));
+//       dispatch(appDoneLoading());
+//     } catch (e) {
+//       console.log(e.message);
+//       dispatch(appDoneLoading());
+//     }
+//   };
+// }
 
 export const addUserIsland =
   ({

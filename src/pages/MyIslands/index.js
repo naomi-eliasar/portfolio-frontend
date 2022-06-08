@@ -1,13 +1,15 @@
-import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { selectUser, selectUserIslands } from "../../store/user/selectors";
 import { fetchUserIslands } from "../../store/user/actions";
 import { Grid, Box, Modal, Button, Typography } from "@mui/material";
+
 import { HeroBanner } from "../../components";
 import { IslandCard } from "../../components/IslandCard";
 import { AddIslandForm } from "./addIslandForm";
 import { deleteMyIsland } from "../../store/user/actions";
+import { Dreamies } from "../Dreamies";
+import { Residents } from "../Residents";
 
 const MyIslands = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const MyIslands = () => {
   };
 
   return userIsland ? (
-    <div className="myIslandsPage">
+    <div className="myIslandPage">
       <HeroBanner>
         <Grid
           container
@@ -66,6 +68,21 @@ const MyIslands = () => {
       </HeroBanner>
 
       <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          backgroundColor="#009a7e"
+          color="white"
+          pl={2}
+          pt={1}
+          minHeight="30px"
+        >
+          <Grid item xs={12}>
+            <h1>Islands</h1>
+          </Grid>
+        </Grid>
+      </Box>
+
+      <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} alignItems="center">
           {userIsland.map((island) => {
             return (
@@ -90,6 +107,42 @@ const MyIslands = () => {
           })}
         </Grid>
       </Box>
+
+      <div>
+        <p></p>
+      </div>
+
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          spacing={2}
+          backgroundColor="#009a7e"
+          color="white"
+          pl={2}
+          minHeight="30px"
+        >
+          <Grid item xs={12}>
+            <h1>Dreamies</h1>
+          </Grid>
+        </Grid>
+      </Box>
+      <Dreamies />
+
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid
+          container
+          spacing={2}
+          backgroundColor="#009a7e"
+          color="white"
+          pl={2}
+          minHeight="30px"
+        >
+          <Grid item xs={12}>
+            <h1>Residents testing</h1>
+          </Grid>
+        </Grid>
+      </Box>
+      <Residents />
     </div>
   ) : (
     <p>Loading...</p>
