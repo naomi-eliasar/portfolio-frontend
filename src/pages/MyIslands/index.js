@@ -128,7 +128,7 @@ const MyIslands = () => {
       </Box>
       <Dreamies />
 
-      <Box sx={{ flexGrow: 1 }}>
+      {/* <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
           spacing={2}
@@ -142,7 +142,7 @@ const MyIslands = () => {
           </Grid>
         </Grid>
       </Box>
-      <Residents />
+      <Residents /> */}
     </div>
   ) : (
     <p>Loading...</p>

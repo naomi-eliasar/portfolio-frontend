@@ -62,17 +62,19 @@ export function fetchDreamies() {
       const dreamiesArray = await Promise.all(
         dreamies.map(async (dreamie) => {
           const responseapi = await axios.get(
-            `${API_URL}&name=${dreamie.villagerId}`
+            `${API_URL}&name=${dreamie.villager}`
           );
-          return responseapi;
+          console.log("thunk response api", responseapi.data);
+          return responseapi.data;
         })
       );
 
-      const relevantData = dreamiesArray.map((item) => item.data);
-      const mapped = relevantData.map((item) => item[0]);
-      console.log("thunk mapped dreamies response", mapped);
+      const relevantData = dreamiesArray.map((item) => item[0]);
+      // const mapped = relevantData.map((item) => item[0]);
+      console.log("thunk data dreamies response", relevantData);
+      // console.log("mapped data", mapped);
 
-      dispatch(userDreamiesFetched(mapped));
+      dispatch(userDreamiesFetched(relevantData));
       dispatch(appDoneLoading());
     } catch (e) {
       console.log(e.message);
