@@ -86,7 +86,7 @@ const MyIslands = () => {
         <Grid container spacing={2} alignItems="center">
           {userIsland.map((island) => {
             return (
-              <Grid item xs={12} sm={6} lg={4}>
+              <Grid item xs={12} sm={6} lg={4} key={island.id}>
                 <IslandCard
                   key={island.id}
                   id={island.id}
@@ -127,21 +127,6 @@ const MyIslands = () => {
         </Grid>
       </Box>
       <Dreamies />
-
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={2}
-          backgroundColor="#009a7e"
-          color="white"
-          pl={2}
-          minHeight="30px"
-        >
-          <Grid item xs={12}>
-            <h1>Residents testing</h1>
-          </Grid>
-        </Grid>
-      </Box>
       <Residents />
     </div>
   ) : (

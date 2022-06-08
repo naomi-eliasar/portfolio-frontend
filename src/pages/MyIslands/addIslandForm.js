@@ -5,14 +5,14 @@ import Button from "@mui/material/Button";
 import { Field } from "../../components";
 // import { addIsland } from "../../store/island/thunk";
 import { addUserIsland } from "../../store/user/actions";
-import { fetchIsland } from "../../store/island/thunk";
-import { useParams } from "react-router-dom";
+// import { fetchIsland } from "../../store/island/thunk";
+// import { useParams } from "react-router-dom";
 import { fetchUserIslands } from "../../store/user/actions";
 import { selectUser } from "../../store/user/selectors";
 
 const AddIslandForm = ({ handleClose }) => {
   const dispatch = useDispatch();
-  const routeParams = useParams();
+  // const routeParams = useParams();
   const user = useSelector(selectUser);
 
   const [name, setName] = useState("");

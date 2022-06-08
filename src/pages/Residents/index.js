@@ -12,10 +12,9 @@ const Residents = () => {
   const residents = useSelector(selectUserResidents);
   const islands = useSelector(selectIsland);
 
-  console.log("user", user);
-  console.log(" user id", user.id);
+  console.log("islands id", islands.id);
   console.log("residents", residents);
-  console.log("islands", islands);
+  console.log("user id", user.id);
 
   useEffect(() => {
     dispatch(fetchResidents(user.id));

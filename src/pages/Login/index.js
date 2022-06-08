@@ -18,7 +18,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token !== null) {
-      navigate("/");
+      navigate("/myislands");
     }
   }, [token, navigate]);
 

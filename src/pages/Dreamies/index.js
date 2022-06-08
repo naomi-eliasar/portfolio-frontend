@@ -10,10 +10,7 @@ const Dreamies = () => {
   const user = useSelector(selectUser);
   const dreamies = useSelector(selectUserDreamies);
 
-  console.log("user", user);
-  console.log("user id", user.id);
   console.log("dreamies", dreamies);
-  console.log("dreamies id?", dreamies.id);
 
   useEffect(() => {
     dispatch(fetchDreamies(user.id));
@@ -24,7 +21,7 @@ const Dreamies = () => {
       <Grid container spacing={2} alignItems="center">
         {dreamies.map((dreamie) => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={dreamie.id}>
               <VillagerCard
                 key={dreamie.id}
                 id={dreamie.id}

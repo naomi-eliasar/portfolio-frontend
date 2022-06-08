@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 
 const EditIslandForm = ({ handleClose }) => {
   const dispatch = useDispatch();
+  const routeParams = useParams();
   const islandDetails = useSelector(selectIsland);
 
   const [name, setName] = useState(islandDetails.name);
@@ -26,9 +27,6 @@ const EditIslandForm = ({ handleClose }) => {
   const [textColor, setTextColor] = useState(islandDetails.textColor);
 
   console.log("edit island", islandDetails);
-  console.log("island id", islandDetails.id);
-
-  const routeParams = useParams();
 
   const submitForm = (event) => {
     event.preventDefault();
