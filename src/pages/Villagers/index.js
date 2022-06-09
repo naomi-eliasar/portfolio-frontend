@@ -1,17 +1,44 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Searchbar, VillagerCard } from "../../components";
 import "./styles.css";
 import { Box, Grid, Button } from "@mui/material";
 import { FaHeart, FaHouseUser } from "react-icons/fa";
 
 import { selectVillagers } from "../../store/villager/selector";
-import { fetchVillagers } from "../../store/villager/thunk";
+import {
+  fetchVillagerDetails,
+  fetchVillagers,
+} from "../../store/villager/thunk";
+import { selectUser } from "../../store/user/selectors";
+import { addUserDreamie } from "../../store/user/actions";
 
 const Villagers = () => {
   const dispatch = useDispatch();
   const villagers = useSelector(selectVillagers);
+  const user = useSelector(selectUser);
+
   const [filter, setFilter] = useState("");
+  const [resident, setResident] = useState(false);
+
+  const onFavoriteClick = (name) => {
+    console.log("favorite clicked?", name);
+
+    const newDreamie = {
+      userId: user.id,
+      islandId: null,
+      villager: name,
+      dreamie: true,
+      resident,
+    };
+    console.log("new dreamie", newDreamie);
+    dispatch(addUserDreamie(newDreamie));
+
+    dispatch(fetchVillagerDetails);
+
+    setResident(false);
+  };
 
   const updateFilter = (e) => {
     setFilter(e.target.value);
@@ -51,7 +78,11 @@ const Villagers = () => {
                       species={villager.species}
                       personality={villager.personality}
                       btnDreamie={
-                        <Button variant="text" style={{ color: "#009a7e" }}>
+                        <Button
+                          variant="text"
+                          style={{ color: "#009a7e" }}
+                          onClick={() => onFavoriteClick(villager.name)}
+                        >
                           <FaHeart />
                         </Button>
                       }

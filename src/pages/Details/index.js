@@ -12,13 +12,11 @@ import { selectUser } from "../../store/user/selectors";
 
 const Details = () => {
   const dispatch = useDispatch();
-  const routeParams = useParams();
   const details = useSelector(selectVillagerDetails);
+  const routeParams = useParams();
   const user = useSelector(selectUser);
 
   const [resident, setResident] = useState(false);
-  // const handleAddDreamie = () => setDreamie(true);
-  // const handleMinusDreamie = () => setDreamie(false);
 
   const onFavoriteClick = (id) => {
     console.log("favorite clicked?", id);
@@ -33,11 +31,8 @@ const Details = () => {
     console.log("new dreamie", newDreamie);
     dispatch(addUserDreamie(newDreamie));
 
-    // dispatch(handleAddDreamie);
     dispatch(fetchVillagerDetails);
 
-    // setVillager("");
-    // setIslandId("");
     setResident(false);
   };
 
