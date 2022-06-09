@@ -1,28 +1,53 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectVillagerDetails } from "../../store/villager/selector";
 import { fetchVillagerDetails } from "../../store/villager/thunk";
 import { HeroBanner, VillagerCard, VillagerSpecs } from "../../components";
 import { VillagerHouse } from "../../components/VillagerHouse";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { Box, Grid, Button } from "@mui/material";
+import { FaHeart, FaHouseUser } from "react-icons/fa";
+import { addUserDreamie } from "../../store/user/actions";
+import { selectUser } from "../../store/user/selectors";
 
 const Details = () => {
   const dispatch = useDispatch();
   const routeParams = useParams();
   const details = useSelector(selectVillagerDetails);
+  const user = useSelector(selectUser);
+
+  const [resident, setResident] = useState(false);
+  // const handleAddDreamie = () => setDreamie(true);
+  // const handleMinusDreamie = () => setDreamie(false);
+
+  const onFavoriteClick = (id) => {
+    console.log("favorite clicked?", id);
+
+    const newDreamie = {
+      userId: user.id,
+      islandId: null,
+      villager: routeParams.id,
+      dreamie: true,
+      resident,
+    };
+    console.log("new dreamie", newDreamie);
+    dispatch(addUserDreamie(newDreamie));
+
+    // dispatch(handleAddDreamie);
+    dispatch(fetchVillagerDetails);
+
+    // setVillager("");
+    // setIslandId("");
+    setResident(false);
+  };
 
   useEffect(() => {
     dispatch(fetchVillagerDetails(routeParams.id));
   }, [dispatch, routeParams.id]);
 
-  console.log("route param:", routeParams.id);
-
   return details ? (
     <div>
       {details.map((detail) => {
-        console.log(`detail name: ${detail.name}`);
         return (
           <div key={detail.id}>
             <HeroBanner>
@@ -39,6 +64,20 @@ const Details = () => {
                     image_url={detail.image_url}
                     personality={detail.personality}
                     species={detail.species}
+                    btnDreamie={
+                      <Button
+                        variant="text"
+                        style={{ color: "#009a7e" }}
+                        onClick={() => onFavoriteClick(detail.id)}
+                      >
+                        <FaHeart />
+                      </Button>
+                    }
+                    btnResident={
+                      <Button variant="text" style={{ color: "#009a7e" }}>
+                        <FaHouseUser />
+                      </Button>
+                    }
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>

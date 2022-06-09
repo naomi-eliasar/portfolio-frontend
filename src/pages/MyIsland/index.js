@@ -28,7 +28,7 @@ const MyIsland = () => {
     dispatch(fetchIsland(routeParams.id));
   }, [dispatch, routeParams.id]);
 
-  console.log("my island", islandDetails);
+  console.log("my island page", islandDetails);
 
   return islandDetails ? (
     <div>

@@ -19,8 +19,6 @@ export function fetchIslandResidents() {
       const { token } = getState().user;
       const { islands } = getState().island;
 
-      console.log("thunk island id", islands.id);
-
       const responsedb = await axios.get(
         `http://localhost:4000/islands/${islands.id}`,
         {
@@ -29,25 +27,20 @@ export function fetchIslandResidents() {
           },
         }
       );
-      console.log("thunk island resident response", responsedb);
       const residents = responsedb.data.favorites;
-      console.log("thunk island residents", residents);
+      console.log("thunk island residents (fav model)", residents);
 
       const residentsArray = await Promise.all(
         residents.map(async (resident) => {
           const responseapi = await axios.get(
             `${API_URL}&name=${resident.villager}`
           );
-          console.log("thunk island response api", responseapi.data);
-          console.log("thunk islandId", resident.islandId);
           return responseapi.data;
         })
       );
-      // const relevantData = residentsArray.map((item) => item.data);
       const relevantData = residentsArray.map((item) => item[0]);
-      console.log("thunk island resident data", relevantData);
-      // const mapped = relevantData.map((item) => item[0]);
-      // console.log("thunk resident mapped", mapped);
+      console.log("thunk island resident data (api)", relevantData);
+
       dispatch(islandResidentsFetched(relevantData));
       dispatch(appDoneLoading());
     } catch (e) {

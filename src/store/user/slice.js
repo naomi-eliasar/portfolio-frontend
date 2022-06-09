@@ -44,6 +44,10 @@ export const userSlice = createSlice({
     userDreamiesFetched: (state, action) => {
       state.userDreamies = action.payload;
     },
+    userDreamieAdded: (state, action) => {
+      state.userDreamies = [...state.userDreamies, action.payload];
+      state.loading = false;
+    },
     userResidentsFetched: (state, action) => {
       state.userResidents = action.payload;
     },
@@ -58,6 +62,7 @@ export const {
   userIslandDeleted,
   userIslandAdded,
   userDreamiesFetched,
+  userDreamieAdded,
   userResidentsFetched,
 } = userSlice.actions;
 

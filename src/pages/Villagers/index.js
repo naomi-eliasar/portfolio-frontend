@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Searchbar, VillagerCard } from "../../components";
 import "./styles.css";
-import { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Button } from "@mui/material";
+import { FaHeart, FaHouseUser } from "react-icons/fa";
 
 import { selectVillagers } from "../../store/villager/selector";
 import { fetchVillagers } from "../../store/villager/thunk";
@@ -50,6 +50,16 @@ const Villagers = () => {
                       image_url={villager.image_url}
                       species={villager.species}
                       personality={villager.personality}
+                      btnDreamie={
+                        <Button variant="text" style={{ color: "#009a7e" }}>
+                          <FaHeart />
+                        </Button>
+                      }
+                      btnResident={
+                        <Button variant="text" style={{ color: "#009a7e" }}>
+                          <FaHouseUser />
+                        </Button>
+                      }
                     />
                   </Grid>
                 );

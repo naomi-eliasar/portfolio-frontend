@@ -1,18 +1,20 @@
 import "./styles.css";
 import { Link } from "react-router-dom";
-import { FaHeart, FaHouseUser } from "react-icons/fa";
-import { Button } from "react-bootstrap";
 
-const VillagerCard = ({ id, name, image_url, personality, species }) => {
+const VillagerCard = ({
+  id,
+  name,
+  image_url,
+  personality,
+  species,
+  btnDreamie,
+  btnResident,
+}) => {
   return (
     <div className="villagerCard">
       <div className="villagerCardFavs">
-        <Button variant="contained">
-          <FaHeart />
-        </Button>
-        <Button variant="contained">
-          <FaHouseUser />
-        </Button>
+        {btnDreamie}
+        {btnResident}
       </div>
       <div className="villagerImageBox">
         <img src={image_url} alt={name} className="villagerImage" />

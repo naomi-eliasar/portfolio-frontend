@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Button } from "@mui/material";
 import { selectUser, selectUserDreamies } from "../../store/user/selectors";
 import { fetchDreamies } from "../../store/villager/thunk";
 import { VillagerCard } from "../../components";
+import { FaHeart, FaHouseUser } from "react-icons/fa";
+import { addUserDreamie } from "../../store/user/actions";
 
 const Dreamies = () => {
   const dispatch = useDispatch();
@@ -11,6 +13,11 @@ const Dreamies = () => {
   const dreamies = useSelector(selectUserDreamies);
 
   console.log("dreamies", dreamies);
+
+  const onFavoriteClick = (id) => {
+    console.log("favorite clicked?", id);
+    dispatch(addUserDreamie(id));
+  };
 
   useEffect(() => {
     dispatch(fetchDreamies(user.id));
@@ -29,6 +36,20 @@ const Dreamies = () => {
                 species={dreamie.species}
                 personality={dreamie.personality}
                 image_url={dreamie.image_url}
+                btnDreamie={
+                  <Button
+                    variant="text"
+                    style={{ color: "#009a7e" }}
+                    onClick={() => onFavoriteClick(dreamie.id)}
+                  >
+                    <FaHeart />
+                  </Button>
+                }
+                btnResident={
+                  <Button variant="text" style={{ color: "#009a7e" }}>
+                    <FaHouseUser />
+                  </Button>
+                }
               />
             </Grid>
           );

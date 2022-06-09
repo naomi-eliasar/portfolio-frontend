@@ -7,7 +7,6 @@ import {
 } from "./slice";
 import { appLoading, appDoneLoading } from "../appState/slice";
 import { userDreamiesFetched, userResidentsFetched } from "../user/slice";
-import { islandResidentsFetched } from "../island/slice";
 
 const API_KEY = process.env.REACT_APP_NOOKIPEDIA_API_KEY;
 const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetails=true&game=NH`;

@@ -8,32 +8,45 @@ import {
   logOut,
   tokenStillValid,
   userIslandsFetched,
-  userDreamiesFetched,
 } from "./slice";
-import { userIslandDeleted, userIslandAdded } from "./slice";
+import { userIslandDeleted, userIslandAdded, userDreamieAdded } from "./slice";
 
-// export function fetchUserDreamies(id) {
-//   return async function (dispatch, getState) {
-//     try {
-//       const { token } = getState().user;
-//       dispatch(appLoading());
-//       const response = await axios.get(
-//         `http://localhost:4000/villagers/dreamies/${id}`,
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-//       console.log("thunk dreamie response", response.data);
-//       dispatch(userDreamiesFetched(response.data));
-//       dispatch(appDoneLoading());
-//     } catch (e) {
-//       console.log(e.message);
-//       dispatch(appDoneLoading());
-//     }
-//   };
-// }
+export const addUserDreamie =
+  ({ islandId, villager, dreamie, resident }) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      const userId = getState().user.profile.id;
+      console.log("thunk userId", userId);
+      console.log("action add dreamie", islandId, villager, dreamie, resident);
+      dispatch(appLoading());
+
+      const response = await axios.post(
+        `http://localhost:4000/villagers/dreamies`,
+        {
+          userId,
+          islandId,
+          villager,
+          dreamie,
+          resident,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("thunk res add dreamie", response.data);
+
+      dispatch(showMessageWithTimeout("succes", true, "Dreamie added"));
+      dispatch(userDreamieAdded(response.data));
+      console.log("dreamie added", userDreamieAdded(response.data));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
 
 export const addUserIsland =
   ({
@@ -48,7 +61,6 @@ export const addUserIsland =
     try {
       const { token } = getState().user;
       const userId = getState().user.profile.id;
-      console.log("thunk userId", userId);
       dispatch(appLoading());
       const response = await axios.post(
         `http://localhost:4000/islands/`,

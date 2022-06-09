@@ -9,7 +9,6 @@ import { IslandCard } from "../../components/IslandCard";
 import { AddIslandForm } from "./addIslandForm";
 import { deleteMyIsland } from "../../store/user/actions";
 import { Dreamies } from "../Dreamies";
-import { Residents } from "../Residents";
 
 const MyIslands = () => {
   const dispatch = useDispatch();

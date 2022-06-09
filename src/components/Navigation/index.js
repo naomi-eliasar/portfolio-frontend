@@ -8,7 +8,6 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 import "./styles.css";
-import { Searchbar, DrawerMenu } from "..";
 
 const Navigation = () => {
   const token = useSelector(selectToken);
@@ -17,7 +16,6 @@ const Navigation = () => {
   const showMyIsland = token ? (
     <NavbarItem path="/myislands" linkText="My Islands" />
   ) : null;
-  const showDrawer = token ? <DrawerMenu /> : null;
 
   return (
     <Navbar expand="lg" sticky="top" variant="dark" className="navbar-custom">
@@ -28,11 +26,7 @@ const Navigation = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Villagers" />
-          <Nav.Item>
-            <Searchbar />
-          </Nav.Item>
           {showMyIsland}
-          <Nav.Item>{showDrawer}</Nav.Item>
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
