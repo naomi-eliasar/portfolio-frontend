@@ -18,13 +18,13 @@ const Details = () => {
 
   const [resident, setResident] = useState(false);
 
-  const onFavoriteClick = (id) => {
-    console.log("favorite clicked?", id);
+  const onFavoriteClick = (name) => {
+    console.log("favorite clicked?", name);
 
     const newDreamie = {
       userId: user.id,
       islandId: null,
-      villager: routeParams.id,
+      villager: name,
       dreamie: true,
       resident,
     };
@@ -63,7 +63,7 @@ const Details = () => {
                       <Button
                         variant="text"
                         style={{ color: "#009a7e" }}
-                        onClick={() => onFavoriteClick(detail.id)}
+                        onClick={() => onFavoriteClick(detail.name)}
                       >
                         <FaHeart />
                       </Button>

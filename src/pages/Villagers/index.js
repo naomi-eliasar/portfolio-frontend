@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { Searchbar, VillagerCard } from "../../components";
 import "./styles.css";
 import { Box, Grid, Button } from "@mui/material";

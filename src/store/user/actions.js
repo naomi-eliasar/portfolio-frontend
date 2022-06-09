@@ -7,6 +7,7 @@ import {
   loginSuccess,
   logOut,
   tokenStillValid,
+  userDreamieDeleted,
   userIslandsFetched,
 } from "./slice";
 import { userIslandDeleted, userIslandAdded, userDreamieAdded } from "./slice";
@@ -47,6 +48,30 @@ export const addUserDreamie =
       dispatch(appDoneLoading());
     }
   };
+
+export const deleteUserDreamie = (id) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().user;
+    dispatch(appLoading());
+    console.log("user action", id);
+    const response = await axios.delete(
+      `http://localhost:4000/villagers/dreamies/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("delete dreamie thunk", response.data);
+
+    dispatch(userDreamieDeleted({ dreamieId: id }));
+
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+    dispatch(appDoneLoading());
+  }
+};
 
 export const addUserIsland =
   ({

@@ -5,7 +5,7 @@ const initialState = {
   profile: null,
   userIslands: [],
   userDreamies: [],
-  userResidents: null,
+  userResidents: [],
 };
 
 export const userSlice = createSlice({
@@ -48,6 +48,12 @@ export const userSlice = createSlice({
       state.userDreamies = [...state.userDreamies, action.payload];
       state.loading = false;
     },
+    userDreamieDeleted: (state, action) => {
+      const dreamieId = action.payload.dreamieId;
+      state.userDreamies = state.userDreamies.filter(
+        (dreamie) => dreamie.id !== dreamieId
+      );
+    },
     userResidentsFetched: (state, action) => {
       state.userResidents = action.payload;
     },
@@ -63,6 +69,7 @@ export const {
   userIslandAdded,
   userDreamiesFetched,
   userDreamieAdded,
+  userDreamieDeleted,
   userResidentsFetched,
 } = userSlice.actions;
 

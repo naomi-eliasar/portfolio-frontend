@@ -5,7 +5,7 @@ import { selectUser, selectUserDreamies } from "../../store/user/selectors";
 import { fetchDreamies } from "../../store/villager/thunk";
 import { VillagerCard } from "../../components";
 import { FaHeart, FaHouseUser } from "react-icons/fa";
-import { addUserDreamie } from "../../store/user/actions";
+import { deleteUserDreamie } from "../../store/user/actions";
 
 const Dreamies = () => {
   const dispatch = useDispatch();
@@ -14,14 +14,14 @@ const Dreamies = () => {
 
   console.log("dreamies", dreamies);
 
-  const onFavoriteClick = (id) => {
-    console.log("favorite clicked?", id);
-    dispatch(addUserDreamie(id));
-  };
-
   useEffect(() => {
     dispatch(fetchDreamies(user.id));
   }, [dispatch, user.id]);
+
+  const onDeleteFavClick = (id) => {
+    console.log("delete dreamie clicked?", id);
+    dispatch(deleteUserDreamie(id));
+  };
 
   return dreamies ? (
     <Box sx={{ flexGrow: 1 }}>
@@ -40,7 +40,7 @@ const Dreamies = () => {
                   <Button
                     variant="text"
                     style={{ color: "#009a7e" }}
-                    onClick={() => onFavoriteClick(dreamie.id)}
+                    onClick={() => onDeleteFavClick(dreamie.id)}
                   >
                     <FaHeart />
                   </Button>
