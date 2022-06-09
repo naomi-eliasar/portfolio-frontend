@@ -4,53 +4,58 @@ import {
   startLoading,
   islandFetched,
   islandUpdated,
-  islandAdded,
+  islandResidentsFetched,
 } from "./slice";
 import { showMessageWithTimeout } from "../appState/actions";
 
-// export const addIsland =
-//   ({
-//     name,
-//     description,
-//     starterFruit,
-//     starterFlower,
-//     backgroundColor,
-//     textColor,
-//   }) =>
-//   async (dispatch, getState) => {
-//     try {
-//       const { token } = getState().user;
-//       const userId = getState().user.profile.id;
-//       console.log("thunk userId", userId);
-//       dispatch(appLoading());
-//       const response = await axios.post(
-//         `http://localhost:4000/islands/`,
-//         {
-//           name,
-//           description,
-//           starterFruit,
-//           starterFlower,
-//           backgroundColor,
-//           textColor,
-//           userId,
-//         },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-//       console.log("thunk add island", response.data);
+const API_KEY = process.env.REACT_APP_NOOKIPEDIA_API_KEY;
+const API_URL = `https://api.nookipedia.com/villagers?api_key=${API_KEY}&nhdetails=true&game=NH`;
 
-//       dispatch(showMessageWithTimeout("succes", true, "Island created"));
-//       dispatch(islandAdded(response.data));
-//       console.log("island added", islandAdded(response.data));
-//       dispatch(appDoneLoading());
-//     } catch (e) {
-//       console.log(e.message);
-//       dispatch(appDoneLoading());
-//     }
-//   };
+export function fetchIslandResidents() {
+  return async function (dispatch, getState) {
+    try {
+      dispatch(appLoading());
+      dispatch(startLoading());
+      const { token } = getState().user;
+      const { islands } = getState().island;
+
+      console.log("thunk island id", islands.id);
+
+      const responsedb = await axios.get(
+        `http://localhost:4000/islands/${islands.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("thunk island resident response", responsedb);
+      const residents = responsedb.data.favorites;
+      console.log("thunk island residents", residents);
+
+      const residentsArray = await Promise.all(
+        residents.map(async (resident) => {
+          const responseapi = await axios.get(
+            `${API_URL}&name=${resident.villager}`
+          );
+          console.log("thunk island response api", responseapi.data);
+          console.log("thunk islandId", resident.islandId);
+          return responseapi.data;
+        })
+      );
+      // const relevantData = residentsArray.map((item) => item.data);
+      const relevantData = residentsArray.map((item) => item[0]);
+      console.log("thunk island resident data", relevantData);
+      // const mapped = relevantData.map((item) => item[0]);
+      // console.log("thunk resident mapped", mapped);
+      dispatch(islandResidentsFetched(relevantData));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
+}
 
 export const updateMyIsland = (
   name,
