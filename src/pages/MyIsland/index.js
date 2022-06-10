@@ -1,6 +1,6 @@
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Grid, Modal, Button, Typography, Box, Divider } from "@mui/material";
 
@@ -30,20 +30,51 @@ const MyIsland = () => {
 
   console.log("my island page", islandDetails);
 
+  const [image, setImage] = useState();
+
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "bcfnswai");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dl5elpdjy/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    const file = await res.json();
+    console.log("file", file);
+    setImage(file.url); //put the url in local state, next step you can send it to the backend
+  };
+
   return islandDetails ? (
     <div>
       <Grid
         container
         spacing={2}
         alignItems="center"
-        pl={18}
+        pl={2}
         style={{
           backgroundColor: `${islandDetails.backgroundColor}`,
           color: `${islandDetails.textColor}`,
           minHeight: "200px",
         }}
       >
-        <Grid item xs={7}>
+        <Grid item xs={2}>
+          <img
+            alt="island"
+            src={
+              image
+                ? image
+                : "https://img.gamewith.net/img/bcfc573ae2779a1eec9ad044f7afd037.jpg"
+            }
+          />
+        </Grid>
+        <Grid item xs={5}>
           <h1>{islandDetails.name}</h1>
           <h5>"{islandDetails.description}"</h5>
         </Grid>
@@ -80,7 +111,10 @@ const MyIsland = () => {
           >
             <Box>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                <EditIslandForm handleClose={handleClose} />
+                <EditIslandForm
+                  handleClose={handleClose}
+                  uploadImage={uploadImage}
+                />
               </Typography>
             </Box>
           </Modal>

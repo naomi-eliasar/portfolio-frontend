@@ -8,7 +8,7 @@ import { updateMyIsland } from "../../store/island/thunk";
 import { fetchIsland } from "../../store/island/thunk";
 import { useParams } from "react-router-dom";
 
-const EditIslandForm = ({ handleClose }) => {
+const EditIslandForm = ({ handleClose, uploadImage }) => {
   const dispatch = useDispatch();
   const routeParams = useParams();
   const islandDetails = useSelector(selectIsland);
@@ -75,6 +75,11 @@ const EditIslandForm = ({ handleClose }) => {
               type="text"
               placeholder="Description of your island"
             />
+          </Form.Group>
+
+          <Form.Group>
+            <Form.Label>Upload image</Form.Label>
+            <Form.Control type="file" onChange={uploadImage} />
           </Form.Group>
 
           <Form.Group>
@@ -252,8 +257,6 @@ const EditIslandForm = ({ handleClose }) => {
               onChange={(event) => setBackgroundColor(event.target.value)}
               type="color"
             />
-          </Form.Group>
-          <Form.Group>
             <Form.Label>Text color</Form.Label>
             <Form.Control
               value={textColor}
@@ -261,6 +264,7 @@ const EditIslandForm = ({ handleClose }) => {
               type="color"
             />
           </Form.Group>
+
           <Form.Group className="mt-3 mb-2">
             <Button
               variant="contained"
