@@ -17,7 +17,12 @@ const VillagerCard = ({
         {btnResident}
       </div>
       <div className="villagerImageBox">
-        <img src={image_url} alt={name} className="villagerImage" />
+        <img
+          src={image_url}
+          alt={name}
+          className="villagerImage"
+          loading="lazy"
+        />
       </div>
       <div className="villagerCardInfo">
         <h2>

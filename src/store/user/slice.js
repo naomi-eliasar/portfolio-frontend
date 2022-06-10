@@ -51,7 +51,7 @@ export const userSlice = createSlice({
     userDreamieDeleted: (state, action) => {
       const dreamieId = action.payload.dreamieId;
       state.userDreamies = state.userDreamies.filter(
-        (dreamie) => dreamie.id !== dreamieId
+        (dreamie) => dreamie.name !== dreamieId
       );
     },
     userResidentsFetched: (state, action) => {

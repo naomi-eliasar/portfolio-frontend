@@ -49,13 +49,13 @@ export const addUserDreamie =
     }
   };
 
-export const deleteUserDreamie = (id) => async (dispatch, getState) => {
+export const deleteUserDreamie = (name) => async (dispatch, getState) => {
   try {
     const { token } = getState().user;
     dispatch(appLoading());
-    console.log("user action", id);
+    console.log("user passed props", name);
     const response = await axios.delete(
-      `http://localhost:4000/villagers/dreamies/${id}`,
+      `http://localhost:4000/villagers/dreamies/${name}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -63,8 +63,7 @@ export const deleteUserDreamie = (id) => async (dispatch, getState) => {
       }
     );
     console.log("delete dreamie thunk", response.data);
-
-    dispatch(userDreamieDeleted({ dreamieId: id }));
+    dispatch(userDreamieDeleted({ dreamieId: name }));
 
     dispatch(appDoneLoading());
   } catch (e) {
@@ -120,12 +119,13 @@ export const deleteMyIsland = (id) => async (dispatch, getState) => {
   try {
     const { token } = getState().user;
     dispatch(appLoading());
+    console.log("delete island id", id);
     const response = await axios.delete(`http://localhost:4000/islands/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("delete thunk", response.data);
+    console.log("delete island thunk", response.data);
 
     dispatch(userIslandDeleted({ islandId: id }));
 

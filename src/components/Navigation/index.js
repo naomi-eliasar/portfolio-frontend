@@ -20,7 +20,7 @@ const Navigation = () => {
   return (
     <Navbar expand="lg" sticky="top" variant="dark" className="navbar-custom">
       <Navbar.Brand as={NavLink} to="/">
-        <h2>Portfolio project</h2>
+        <h2>NookBook</h2>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

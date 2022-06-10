@@ -18,9 +18,9 @@ const Dreamies = () => {
     dispatch(fetchDreamies(user.id));
   }, [dispatch, user.id]);
 
-  const onDeleteFavClick = (id) => {
-    console.log("delete dreamie clicked?", id);
-    dispatch(deleteUserDreamie(id));
+  const onDeleteFavClick = (name) => {
+    console.log("delete dreamie clicked?", name);
+    dispatch(deleteUserDreamie(name));
   };
 
   return dreamies ? (
@@ -40,7 +40,7 @@ const Dreamies = () => {
                   <Button
                     variant="text"
                     style={{ color: "#009a7e" }}
-                    onClick={() => onDeleteFavClick(dreamie.id)}
+                    onClick={() => onDeleteFavClick(dreamie.name)}
                   >
                     <FaHeart />
                   </Button>

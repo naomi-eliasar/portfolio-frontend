@@ -15,7 +15,10 @@ export async function fetchVillagers(dispatch, getState) {
   try {
     dispatch(appLoading());
     dispatch(startLoading());
-    const response = await axios.get(`${API_URL}`);
+    const offset = getState().villager.villagers.length;
+    console.log("offset", offset);
+
+    const response = await axios.get(`${API_URL}&offset=${offset}&limit=5`);
     console.log("thunk villagers response", response.data);
     dispatch(villagersFetched(response.data));
     dispatch(appDoneLoading());
