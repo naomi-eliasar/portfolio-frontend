@@ -67,7 +67,12 @@ const MyIsland = () => {
         <Grid item xs={2}>
           <img
             alt="island"
-            style={{ maxHeight: "180px", maxWidth: "240px", padding: "10px" }}
+            style={{
+              maxHeight: "180px",
+              maxWidth: "240px",
+              padding: "10px",
+              borderRadius: "20px",
+            }}
             src={
               image
                 ? image
@@ -144,24 +149,30 @@ const MyIsland = () => {
       <div>
         <p></p>
       </div> */}
-
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          style={{
-            backgroundColor: `${islandDetails.backgroundColor}`,
-            color: `${islandDetails.textColor}`,
-          }}
-          pl={2}
-          pt={1}
-          minHeight="30px"
-        >
-          <Grid item xs={12}>
-            <h1>Residents</h1>
+      <div
+        className="section"
+        style={{ backgroundColor: `${islandDetails.textColor}44` }}
+      >
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid
+            container
+            style={{
+              backgroundColor: `${islandDetails.backgroundColor}`,
+              color: `${islandDetails.textColor}`,
+              borderRadius: "20px",
+            }}
+            pl={2}
+            pt={1}
+            minHeight="30px"
+          >
+            <Grid item xs={12}>
+              <h1>Residents</h1>
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
-      <Residents />
+        </Box>
+
+        <Residents />
+      </div>
     </div>
   ) : (
     <p>Loading...</p>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./style.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectVillagerDetails } from "../../store/villager/selector";
@@ -49,57 +50,59 @@ const Details = () => {
               <h1>{detail.name}</h1>
               <h5>"{detail.quote}"</h5>
             </HeroBanner>
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={2} justifyContent="center">
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                  <VillagerCard
-                    key={detail.id}
-                    id={detail.id}
-                    name={detail.name}
-                    image_url={detail.image_url}
-                    personality={detail.personality}
-                    species={detail.species}
-                    btnDreamie={
-                      <Button
-                        variant="text"
-                        style={{ color: "#009a7e" }}
-                        onClick={() => onFavoriteClick(detail.name)}
-                      >
-                        <FaHeart />
-                      </Button>
-                    }
-                    btnResident={
-                      <Button variant="text" style={{ color: "#009a7e" }}>
-                        <FaHouseUser />
-                      </Button>
-                    }
-                  />
+            <div className="section">
+              <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2} justifyContent="center">
+                  <Grid item xs={12} sm={6} md={4}>
+                    <VillagerCard
+                      key={detail.id}
+                      id={detail.id}
+                      name={detail.name}
+                      image_url={detail.image_url}
+                      personality={detail.personality}
+                      species={detail.species}
+                      btnDreamie={
+                        <Button
+                          variant="text"
+                          style={{ color: "#009a7e" }}
+                          onClick={() => onFavoriteClick(detail.name)}
+                        >
+                          <FaHeart />
+                        </Button>
+                      }
+                      btnResident={
+                        <Button variant="text" style={{ color: "#009a7e" }}>
+                          <FaHouseUser />
+                        </Button>
+                      }
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={4}>
+                    <VillagerHouse
+                      key={detail.id}
+                      id={detail.id}
+                      name={detail.name}
+                      houseExteriorUrl={detail.nh_details.house_exterior_url}
+                      houseInteriorUrl={detail.nh_details.house_interior_url}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={4}>
+                    <VillagerSpecs
+                      key={detail.id}
+                      id={detail.id}
+                      personality={detail.personality}
+                      species={detail.species}
+                      birthday_day={detail.birthday_day}
+                      birthday_month={detail.birthday_month}
+                      color={detail.nh_details.fav_colors}
+                      style={detail.nh_details.fav_styles}
+                      catchphrase={detail.nh_details.catchphrase}
+                      sign={detail.sign}
+                    />
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                  <VillagerHouse
-                    key={detail.id}
-                    id={detail.id}
-                    name={detail.name}
-                    houseExteriorUrl={detail.nh_details.house_exterior_url}
-                    houseInteriorUrl={detail.nh_details.house_interior_url}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                  <VillagerSpecs
-                    key={detail.id}
-                    id={detail.id}
-                    personality={detail.personality}
-                    species={detail.species}
-                    birthday_day={detail.birthday_day}
-                    birthday_month={detail.birthday_month}
-                    color={detail.nh_details.fav_colors}
-                    style={detail.nh_details.fav_styles}
-                    catchphrase={detail.nh_details.catchphrase}
-                    sign={detail.sign}
-                  />
-                </Grid>
-              </Grid>
-            </Box>
+              </Box>
+            </div>
           </div>
         );
       })}
