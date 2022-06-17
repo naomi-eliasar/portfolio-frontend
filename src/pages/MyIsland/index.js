@@ -67,6 +67,7 @@ const MyIsland = () => {
         <Grid item xs={2}>
           <img
             alt="island"
+            style={{ maxHeight: "180px", maxWidth: "240px", padding: "10px" }}
             src={
               image
                 ? image
@@ -123,7 +124,7 @@ const MyIsland = () => {
 
       <Divider />
 
-      <Box sx={{ flexGrow: 1 }}>
+      {/* <Box sx={{ flexGrow: 1 }}>
         <Grid
           container
           style={{
@@ -142,7 +143,7 @@ const MyIsland = () => {
 
       <div>
         <p></p>
-      </div>
+      </div> */}
 
       <Box sx={{ flexGrow: 1 }}>
         <Grid

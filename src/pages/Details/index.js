@@ -105,7 +105,7 @@ const Details = () => {
       })}
     </div>
   ) : (
-    <p>Loading...</p>
+    <p> Loading...</p>
   );
 };
 

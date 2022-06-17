@@ -1,8 +1,10 @@
 .hero-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   background-color: #08ccad;
   color: white;
   min-height: 200px;
-  /* padding-top: 60px; */
-  /* padding-left: 150px; */
+  padding-left: 15px;
 }
