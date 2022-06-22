@@ -24,3 +24,22 @@ Animalogs is there to help you keep track of your animal crossing villagers.
   <img alt="Material UI" height="30px" src="https://img.shields.io/badge/-MaterialUI-%2320232a.svg?style=for-the-badge&logo=MUI&logoColor=blue"/>
   <img alt="Bootstrap" height="30px" src="https://img.shields.io/badge/-Bootstrap-%2320232a.svg?style=for-the-badge&logo=Bootstrap&logoColor=593D88"/>
  </p>
+
+<h2> Demo </h2>
+<p>Homepage</p>
+<img alt="homepage" src="https://media.giphy.com/media/Gk49qj7MMA0UK6RCVh/giphy.gif"/>
+
+<p>Detailspage</p>
+<img alt="detailspage" src="https://media.giphy.com/media/vL25QZsZIzQGtT7hIW/giphy.gif"/>
+
+<p>Login</p>
+<img alt="login" src="https://media.giphy.com/media/QFXwhHRSxXT715aLun/giphy.gif"/>
+
+<p>Delete and edit island</p>
+<img alt="edit and delete island" src="https://media.giphy.com/media/RnXOD596Yolo7yzDk0/giphy-downsized.gif"/>
+
+<p>Add new island</p>
+<img alt="add new island" src="https://media.giphy.com/media/azxez53SqCQF0zK2mZ/giphy.gif"/>
+
+<p>Add and remove favorite</p>
+<img alt="favorites" src="https://media.giphy.com/media/vPchQpxVlEYiXddzMx/giphy.gif"/>
