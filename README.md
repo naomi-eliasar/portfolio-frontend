@@ -20,4 +20,7 @@ Animalogs is there to help you keep track of your animal crossing villagers.
  </p>
 
 <h3> UI Frameworks </h3>
-<img alt="Material UI" height="30px" src="https://img.shields.io/badge/-MaterialUI-%2320232a.svg?style=for-the-badge&logo=MUI&logoColor=blue"/>
+<p>
+  <img alt="Material UI" height="30px" src="https://img.shields.io/badge/-MaterialUI-%2320232a.svg?style=for-the-badge&logo=MUI&logoColor=blue"/>
+  <img alt="Bootstrap" height="30px" src="https://img.shields.io/badge/-Bootstrap-%2320232a.svg?style=for-the-badge&logo=Bootstrap&logoColor=593D88"/>
+ </p>
