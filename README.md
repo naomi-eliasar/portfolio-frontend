@@ -1,5 +1,6 @@
 <h1> Animalogs </h1>
-Animalogs is there to help you keep track of your animal crossing villagers.
+Animalogs is my first fullstack project I made by myself at the end of the codaisseur bootcamp. 
+It helps you keep track of your animal crossing villagers.
 
 <h2> Tech Stack </h2>
 <h3> Front-end </h3>
